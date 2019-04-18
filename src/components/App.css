@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  margin: 10%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+}
+
+.Container {
+  text-align: center;
 }
 
 .App-logo {
