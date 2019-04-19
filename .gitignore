@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 */.vs
+.vs/VSWorkspaceState.json
+.vs/slnx.sqlite
+.vs/pdes-tp-waynes-tech/v16/.suo
