@@ -27,6 +27,6 @@ Fabrica.propTypes = {
   filas: PropTypes.number
 }
 
-Tablero.defaultProps = {
+Fabrica.defaultProps = {
   filas:6  
 }
