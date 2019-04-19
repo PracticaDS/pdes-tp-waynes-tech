@@ -1,0 +1,14 @@
+.ToolBox{
+    height: 350px;
+    width: 30%;
+}
+
+h3{
+    color:rgb(241, 158, 2);
+    padding-right: 150%;
+}
+
+table{
+    background-color: aliceblue;
+    border-radius: 10%;
+}
