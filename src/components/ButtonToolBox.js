@@ -7,7 +7,7 @@ export class ButtonToolBox extends Component {
     return (
         <div className="ButtonToolbox">
 
-          <img src={this.props.src} />
+          <img src={this.props.src} alt="tool"/>
             
         </div>
     )
