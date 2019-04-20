@@ -1,32 +1,44 @@
 import React, { Component } from 'react';
 import './Fabrica.css';
 import { PropTypes } from 'prop-types';
+import {Fila} from './Fila'
 
 export class Fabrica extends Component {
   
   constructor(props) {
     super(props);
     this.state = {
-      columnas: Array,
-    };
+      
+    }
   }
 
-
   render() {
+    
     return (
-        <div className="Grilla">
-            <h2>Tablero de la fabrica </h2>
+        <div className="grilla">
+            {this.dibujarGrilla()}
         </div>
     )
   }
   
+  dibujarGrilla(){
+    var grilla = [];
+    for (var i = 1; i <= this.props.filas; i++) {
+      grilla.push(
+        <Fila index= {i} columnas= {this.props.columnas}/>
+      );
+    }
+    return grilla;
+  }
+
 }
 
 Fabrica.propTypes = {
-  contenidos: PropTypes.array,
-  filas: PropTypes.number
+  filas : PropTypes.number,
+  columnas: PropTypes.number
 }
 
-Fabrica.defaultProps = {
-  filas:6  
+Fabrica.defaultProps = { 
+  filas : 6,
+  columnas: 8
 }
