@@ -4,6 +4,7 @@ import { Fabrica } from './Fabrica';
 import { ToolBox } from './ToolBox';
 import { InfoBox } from './InfoBox';
 
+
 class App extends Component {
   render() {
     return (

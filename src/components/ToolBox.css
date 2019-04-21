@@ -4,6 +4,10 @@
     align-content: center;
 }
 
+div.ButtonToolbox.seleccionado img{
+    filter: hue-rotate(60deg) brightness(500%);
+}
+
 h3{
     color:rgb(241, 158, 2);
     /*padding-right: 150%;*/
