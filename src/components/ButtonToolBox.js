@@ -4,7 +4,6 @@ import PropTypes            from 'prop-types';
 export class ButtonToolBox extends Component {
 
 
-
   render() {
 	    if (this.props.seleccionado){
           return <div className="ButtonToolbox seleccionado" >
