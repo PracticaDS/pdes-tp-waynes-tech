@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './Fabrica.css';
 import { PropTypes } from 'prop-types';
-import {Fila} from './Fila'
+import { Fila } from './Fila'
 
 export class Fabrica extends Component {
   
   constructor(props) {
     super(props);
     this.state = {
-      
+      grillas: []
     }
   }
 
@@ -28,6 +28,7 @@ export class Fabrica extends Component {
         <Fila index= {i} columnas= {this.props.columnas}/>
       );
     }
+    this.grillas = grilla;
     return grilla;
   }
 
