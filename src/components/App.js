@@ -8,10 +8,10 @@ class App extends Component {
   render() {
     return (
       <div className="Container">
-        <h1>Titulo</h1>
+        <h1>Wayne's Tech</h1>
         <div className="App">  
           <ToolBox />
-          <Fabrica />
+          <Fabrica className="fabrica" filas="10" columnas="15" />
           <InfoBox />        
         </div>
       </div>

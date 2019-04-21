@@ -25,7 +25,7 @@ export class Fabrica extends Component {
     var grilla = [];
     for (var i = 1; i <= this.props.filas; i++) {
       grilla.push(
-        <Fila index= {i} columnas= {this.props.columnas}/>
+        <Fila index= {i} columnas= {this.props.columnas} />
       );
     }
     this.grillas = grilla;

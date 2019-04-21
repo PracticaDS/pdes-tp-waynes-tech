@@ -14,7 +14,7 @@ export class Celda extends Component {
     render () {
         return (
         <div className="celda">
-            machine
+            
         </div>   
         )
     }
