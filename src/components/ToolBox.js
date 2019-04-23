@@ -22,8 +22,8 @@ export class ToolBox extends Component {
     this.state = { toolSeleccionado: "" };
   }
 
-  handleSelect = (toolSeleccionado) => {
-    this.setState({ toolSeleccionado });
+  handleSelect = (tool) => {
+    this.setState({ toolSeleccionado: tool });
   }
 
   crearBoton(props){
