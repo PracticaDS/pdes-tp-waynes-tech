@@ -1,18 +1,28 @@
-import React, { Component } from 'react';
+
 import { ButtonToolBox }    from './ButtonToolBox';
-import { PropTypes }        from 'prop-types';
+import type { Buttons, Id } from '../types/ButtonType';
 import './ToolBox.css';
+import type {onButtonToolClick} from '../containers/ContainerToolBox';
+import React from 'react'
 
-import boton_borrar from './images/delete.PNG';
-import boton_rotar  from './images/rotate.PNG';
-import boton_move   from './images/move.PNG';
+export type Props = {
+  botones: Buttons,
+  onButtonToolClick: (id: Id) => void
+};
 
-import boton_crafter     from './images/crafter.PNG';
-import boton_start       from './images/starter.PNG';
-import boton_furnace     from './images/furnace.PNG';
-import boton_seller      from './images/seller.PNG';
-import boton_transporter from './images/transporter.PNG';
+export const ToolBox = ({ botones, onButtonToolClick }: Props) => (
+  <div className="ToolBox">
+    {
+      botones.map(boton => (
+        <ButtonToolBox key={boton.id} {...boton} onClick={() => onButtonToolClick(boton.id)} />
+      ))}
+  </div>
+);
 
+export default ToolBox;
+
+/*
+import React, { Component } from 'react';
 
 export class ToolBox extends Component {
 
@@ -71,3 +81,4 @@ export class ToolBox extends Component {
     )
   }
 }
+*/
