@@ -21,8 +21,14 @@ class App extends Component {
         <h1>Wayne's Tech</h1>
         <div className="App">  
           <ToolBox botones={[
-            {image:boton_start,  press:"unselected", id:1},
-            {image:boton_seller, press:"unselected", id:2}
+            {image:boton_start,       press:"unselected", id:1},
+            {image:boton_seller,      press:"unselected", id:2},
+            {image:boton_crafter,     press:"unselected", id:3},
+            {image:boton_furnace,     press:"unselected", id:4},
+            {image:boton_transporter, press:"unselected", id:5},
+            {image:boton_borrar,      press:"unselected", id:6},
+            {image:boton_rotar,       press:"unselected", id:7},
+            {image:boton_move,        press:"unselected", id:8}
             ]}/>
           <Fabrica className="fabrica" filas="10" columnas="15" />
           <InfoBox />        
