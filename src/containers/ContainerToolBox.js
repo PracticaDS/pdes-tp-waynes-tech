@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
 
-import { selectButton } from '../actions/ButtonToolBoxAction';
-import ToolBox          from '../components/ToolBox';
+import { selectButton } from '../actions/ButtonAction';
+import  ToolBox         from '../components/ToolBox';
 
 import type { State, Dispatch } from '../types';
-
 
 export const mapStateToProps = (state: State) => {
     return {
