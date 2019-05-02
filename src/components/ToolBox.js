@@ -1,5 +1,5 @@
 
-import { ButtonToolBox }    from './ButtonToolBox';
+import  ButtonToolBox     from './ButtonToolBox';
 import type { Buttons, Id } from '../types/ButtonType';
 import './ToolBox.css';
 import React from 'react'
@@ -9,7 +9,20 @@ export type Props = {
   onButtonToolClick: (id: Id) => void
 };
 
+const ToolBox = ({ botones, onButtonToolClick }: Props) => (
+  <div className="ToolBox">
+    {
+      botones.map(boton => (
+        <ButtonToolBox
+          key={boton.id}
+          {...boton}
+          onClick={() => onButtonToolClick(boton.id)}
+        />
+      ))}
+  </div>
+);
 
+/*
 export const ToolBox = ({ botones, onButtonToolClick }: Props) => (
   <div className="ToolBox">
     <h3>Máquinas</h3>
@@ -74,6 +87,6 @@ export const ToolBox = ({ botones, onButtonToolClick }: Props) => (
      </table>
   </div>
 );
-
+*/
 
 export default ToolBox;

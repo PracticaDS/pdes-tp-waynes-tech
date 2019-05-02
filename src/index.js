@@ -24,7 +24,7 @@ import type { Store } from './types';
 const store: Store = createStore(
   reducers,
   initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({ trace: true, traceLimit: 25 })
 );
 
 const element = document.getElementById('root');

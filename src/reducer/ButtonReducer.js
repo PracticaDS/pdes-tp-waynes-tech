@@ -1,23 +1,20 @@
 
-import type { Id, Press, ButtonAction, Buttons } from '../types/ButtonType';
-
+ import { Id, Buttons } from '../types/ButtonType';
+ import type { Action } from '../types';
 
 const selectButton = (botones: Buttons, id: Id): Buttons => {
 
-  /** aun no se que apsa si se selecciona un boton */
   botones.map(t => (t.id !== id ? { ...t, press: 'unselected' } : { ...t, press: 'selected' }));
   return botones;
 };
 
 
-const botones = (state: Buttons = [], action: ButtonAction): Buttons => {
+const botones = (state: Buttons = [], action: Action): Buttons => {
   switch (action.type) {
+    case '@@INIT':
+      return state;
     case 'SELECT':
       return selectButton(state, action.id);
-
-    case 'OTRO':
-      return state;
-
     default:
       return state;
   }

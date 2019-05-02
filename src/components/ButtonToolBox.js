@@ -1,4 +1,4 @@
-import type  { Image, Press }  from '../types/ficha';
+import type  { Image, Press }  from '../types/ButtonType';
 import './ToolBox.css';
 import React from 'react'
 
@@ -20,7 +20,7 @@ export type Props = {
   image: Image
 };
 
-export const ButtonToolBox = ({ onClick, image, press }: Props) => (
+const ButtonToolBox = ({ onClick, image, press }: Props) => (
   <div className={getSelectStyle(press)} onClick={onClick}>
     <img src={image} alt="tool" />
   </div>

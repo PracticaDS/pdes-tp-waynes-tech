@@ -13,8 +13,7 @@ export type Buttons = Array<ButtonType>;
 
   
 export type ButtonAction =
-| { type: 'SELECT', +id: Id }
-| { type: 'OTRO' };
+| { type: 'SELECT', +id: Id };
 
 
 export type ButtonState = {
