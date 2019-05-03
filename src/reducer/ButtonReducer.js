@@ -4,8 +4,8 @@
 
 const selectButton = (botones: Buttons, id: Id): Buttons => {
 
-  botones.map(t => (t.id !== id ? { ...t, press: 'unselected' } : { ...t, press: 'selected' }));
-  return botones;
+  return botones.map(t => (t.id !== id ? { ...t, press: 'unselected' } : { ...t, press: 'selected' }));
+
 };
 
 

@@ -9,6 +9,7 @@ export type Props = {
   onButtonToolClick: (id: Id) => void
 };
 
+/*
 const ToolBox = ({ botones, onButtonToolClick }: Props) => (
   <div className="ToolBox">
     {
@@ -20,9 +21,9 @@ const ToolBox = ({ botones, onButtonToolClick }: Props) => (
         />
       ))}
   </div>
-);
+); */
 
-/*
+
 export const ToolBox = ({ botones, onButtonToolClick }: Props) => (
   <div className="ToolBox">
     <h3>Máquinas</h3>
@@ -87,6 +88,6 @@ export const ToolBox = ({ botones, onButtonToolClick }: Props) => (
      </table>
   </div>
 );
-*/
+
 
 export default ToolBox;
