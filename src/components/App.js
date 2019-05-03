@@ -1,23 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import { Fabrica } from './Fabrica';
-import { ToolBox } from './ToolBox';
+import  ToolBox    from '../containers/ContainerToolBox';
 import { InfoBox } from './InfoBox';
 
-
-class App extends Component {
-  render() {
-    return (
-      <div className="Container">
+const App = () => (
+  <div>
+     <div className="Container">
         <h1>Wayne's Tech</h1>
         <div className="App">  
-          <ToolBox />
+          <ToolBox/>
           <Fabrica className="fabrica" filas="10" columnas="15" />
           <InfoBox />        
         </div>
       </div>
-    );
-  }
-}
+  </div>
+);
 
 export default App;
+
+
+
+
+
+
+
+
+
+
