@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
+import React from 'react';
 import './Celda.css';
-import Maquina from '../types/Maquina'
+import type {MaquinaType} from '../types/Maquina';
+import Maquina from './Maquina';
 
 export const Celda = ({maquina}: Props) => (
     <div className="celda">
-        {maquina === null ? '' : maquina}
+        { maquina === undefined ? '' : <Maquina image={maquina.image}/> }
     </div>   
 );
 
 
 export type Props = {
-    maquina: Maquina
+    maquina: MaquinaType
 }

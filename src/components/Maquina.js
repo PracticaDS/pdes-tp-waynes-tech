@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
+import React from 'react';
 import './Maquina.css';
-import type {Maquina} from '../types/Maquina'
+import type {Image} from './Utils';
 
-export const Maquina = () => (
+export type Props = {
+    image: Image
+  };
+
+export const Maquina = ({image}): Props => (
     <div>
-        <img src={maquina.image} alt="maquina" />
+        <img src={image} alt="maquina" />
     </div>
 );
 
-export type Props = {
-    maquina : Maquina,
-}
+export default Maquina;

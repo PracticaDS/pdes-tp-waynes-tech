@@ -1,9 +1,8 @@
-type Id = number; 
-type Image = String;
+import type {Id, Image} from './Utils';
 
-export type Maquina = {
+export type MaquinaType = {
     +id: Id,
-    +iamge: Image
+    +image: Image
 }
 
 export type MaquinaAction = 

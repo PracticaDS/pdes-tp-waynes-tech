@@ -20,7 +20,7 @@ export const initialState = {
     ],
     configFabrica: {
        numeroFilas: 10,
-       numeroColumnas: 10
+       numeroColumnas: 8
     }
   };
   

@@ -1,7 +1,6 @@
-export type Id = number;
-export type Image = string;
-export type Press = 'selected' | 'unselected';
+import type {Id, Image} from './Utils';
 
+export type Press = 'selected' | 'unselected';
 
 export type ButtonType = {
     +id: Id,
@@ -10,7 +9,6 @@ export type ButtonType = {
   };
 
 export type Buttons = Array<ButtonType>;
-
   
 export type ButtonAction =
 | { type: 'SELECT', +id: Id };

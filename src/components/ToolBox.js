@@ -1,8 +1,9 @@
-
-import  ButtonToolBox       from './ButtonToolBox';
-import type { Buttons, Id } from '../types/ButtonType';
-import './ToolBox.css';
 import React from 'react';
+import  ButtonToolBox   from './ButtonToolBox';
+import type { Buttons } from '../types/ButtonType';
+import type {  Id }     from '../types/Utils';
+import './ToolBox.css';
+
 
 export type Props = {
   botones: Buttons,
