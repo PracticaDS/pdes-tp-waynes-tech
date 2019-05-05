@@ -11,7 +11,7 @@ export type Props = {
 };
 
 export const Fabrica = ({ configFabrica }: Props) => (
-  <div className="fabrica">
+  <div className="grilla">
 
       { dibujarGrilla(configFabrica.numeroFilas, configFabrica.numeroColumnas)}
   
