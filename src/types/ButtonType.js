@@ -16,7 +16,4 @@ export type ButtonAction =
 | { type: 'SELECT', +id: Id };
 
 
-export type ButtonState = {
-    +botones: Buttons
-  };
 

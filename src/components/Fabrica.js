@@ -1,9 +1,39 @@
-import React, { Component } from 'react';
+//import React, { Component } from 'react';
 import './Fabrica.css';
-import { PropTypes } from 'prop-types';
-import { Fila } from './Fila'
+//import { PropTypes } from 'prop-types';
+import { Fila } from './Fila';
+import type {ConfigFabrica} from '../types/GameState';
+import React from 'react';
 
+export type Props = {
+  configFabrica: ConfigFabrica
+  
+};
+
+export const Fabrica = ({ configFabrica }: Props) => (
+  <div className="fabrica">
+
+      { dibujarGrilla(configFabrica.numeroFilas, configFabrica.numeroColumnas)}
+  
+  </div>  
+); 
+
+const dibujarGrilla = (numeroFilas: CantFilas, numeroColumnas: CantColumnas) => {
+  var grilla = [];
+  for (var i = 1; i <= numeroFilas; i++) {
+    grilla.push(
+      <Fila key={i} index={i} columnas={numeroColumnas} />
+    );
+  }
+  return grilla;
+};
+
+
+export default Fabrica;
+
+/*
 export class Fabrica extends Component {
+  
   
   constructor(props) {
     super(props);
@@ -13,7 +43,6 @@ export class Fabrica extends Component {
   }
 
   render() {
-    
     return (
         <div className="grilla">
             {this.dibujarGrilla()}
@@ -43,3 +72,5 @@ Fabrica.defaultProps = {
   filas : 6,
   columnas: 8
 }
+
+*/

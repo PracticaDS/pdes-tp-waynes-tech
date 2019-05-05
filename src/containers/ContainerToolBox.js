@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-
 import { selectButton } from '../actions/ButtonAction';
 import  ToolBox         from '../components/ToolBox';
 

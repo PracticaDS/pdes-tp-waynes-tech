@@ -24,7 +24,7 @@ export class Fila extends Component {
         var celdas = [];
         for (var i=1; i<= this.props.columnas; i++){
             celdas.push(
-                <Celda fila={this.props.index} columna={i} />
+                <Celda key={i} fila={this.props.index} columna={i} />
             )
         }
         this.celdas= celdas;

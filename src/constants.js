@@ -17,6 +17,10 @@ export const initialState = {
         {image:boton_borrar,      press:"unselected", id:6},
         {image:boton_rotar,       press:"unselected", id:7},
         {image:boton_move,        press:"unselected", id:8}
-    ]
+    ],
+    configFabrica: {
+       numeroFilas: 10,
+       numeroColumnas: 10
+    }
   };
   
