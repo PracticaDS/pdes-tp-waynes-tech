@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import './Celda.css';
+import Maquina from '../types/Maquina'
 
-export class Celda extends Component {
+export const Celda = ({maquina}: Props) => (
+    <div className="celda">
+        {maquina === null ? '' : maquina}
+    </div>   
+);
 
-    constructor(props){
-        super (props);
-        this.state = {
-            
-        }
-    }
 
-    render () {
-        return (
-        <div className="celda">
-            
-        </div>   
-        )
-    }
-
+export type Props = {
+    maquina: Maquina
 }
