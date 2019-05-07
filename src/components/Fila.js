@@ -32,7 +32,6 @@ export class Fila extends Component {
                        boton={this.props.boton}  
                        fila={this.props.index} 
                        columna={i}
-                       //onClick={() => onCeldaClick(this.props.boton, i, this.props.index)} 
                 />
             )
         }

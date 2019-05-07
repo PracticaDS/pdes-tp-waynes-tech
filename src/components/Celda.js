@@ -8,8 +8,8 @@ export type Props = {
     onClick: () => void
 }
 
-export const Celda = ({ onClick}: Props) => (
-    <div className="celda" onClick={onClick} >
+export const Celda = ({ onClick, fila, columna}: Props) => (
+    <div className="celda" onClick={() => onClick(this, fila, columna)} >
         
     </div>   
 );

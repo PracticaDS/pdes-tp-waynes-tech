@@ -15,8 +15,8 @@ export const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
        // onCeldaClick: boton, idCelda, idFila => {
          //   dispatch(ponerMaquina(boton, idCelda, idFila));
-         onCeldaClick: boton => {
-           dispatch(ponerMaquina(boton));
+         onClick: (boton, fila, columna) => {
+           dispatch(ponerMaquina(boton, fila, columna));
       }
     };
 };
