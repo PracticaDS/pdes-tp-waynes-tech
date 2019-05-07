@@ -21,6 +21,7 @@ export const initialState = {
     configFabrica: {
        numeroFilas: 10,
        numeroColumnas: 8
-    }
+    },
+    celdas: []
   };
   

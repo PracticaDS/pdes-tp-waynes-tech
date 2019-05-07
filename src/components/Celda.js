@@ -1,15 +1,18 @@
 import React from 'react';
 import './Celda.css';
-import type {MaquinaType} from '../types/Maquina';
+import type {BotonType} from '../types/BotonType';
 import Maquina from './Maquina';
 
-export const Celda = ({maquina}: Props) => (
-    <div className="celda">
-        { maquina === undefined ? '' : <Maquina image={maquina.image}/> }
+
+export type Props = {
+    onClick: () => void
+}
+
+export const Celda = ({ onClick}: Props) => (
+    <div className="celda" onClick={onClick} >
+        
     </div>   
 );
 
 
-export type Props = {
-    maquina: MaquinaType
-}
+export default Celda;

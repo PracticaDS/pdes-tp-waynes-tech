@@ -5,9 +5,11 @@ import type { State } from '../types';
 
 export const mapStateToProps = (state: State) => {
     return {
-       configFabrica: state.configFabrica
+       configFabrica: state.configFabrica,
+       botones: state.botones,
+       botonSeleccionado: state.botonSeleccionado
     };
-  };
+};
 
 
 const connector = connect(

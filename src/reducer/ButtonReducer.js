@@ -20,4 +20,5 @@ const botones = (state: Buttons = [], action: Action): Buttons => {
   }
 };
 
+
 export default botones;

@@ -6,4 +6,4 @@ export type MaquinaType = {
 }
 
 export type MaquinaAction = 
-| { type: 'AGREGAR_MAQUINA' }
+| { type: 'AGREGAR_MAQUINA', +image: Image };

@@ -6,7 +6,8 @@ import type { State, Dispatch } from '../types';
 
 export const mapStateToProps = (state: State) => {
     return {
-       botones: state.botones
+       botones: state.botones,
+       botonSeleccionado: state.botonSeleccionado
     };
   };
 

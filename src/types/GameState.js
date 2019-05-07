@@ -1,4 +1,5 @@
-import type {Buttons} from './ButtonType';
+import type {Buttons, ButtonType} from './ButtonType';
+import type {Celdas} from './CeldaType';
 
 export type CantFilas = number;
 export type CantColumnas = number;
@@ -10,6 +11,8 @@ export type ConfigFabrica = {
 
 export type GameState = {
     +botones: Buttons,
-    +configFabrica: ConfigFabrica
+    +configFabrica: ConfigFabrica,
+    +celdas: Celdas
+    
 };
 
