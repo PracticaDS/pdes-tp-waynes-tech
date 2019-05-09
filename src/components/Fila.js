@@ -26,14 +26,21 @@ export class Fila extends Component {
     dibujarCeldas(){
         var celdas = [];
         for (var i=1; i<= this.props.columnas; i++){
-            celdas.push(
+           celdas.push(
                 <Celda key={i}
                        id={i} 
                        boton={this.props.boton}  
                        fila={this.props.index} 
-                       columna={i}
-                />
+                       columna={i} />
+               
             )
+            
+            /* Se setean las celdas en el estore */
+            let celdaActual =  this.props.celdaStore.filter(c => c.id === i && c.idFila === this.props.index);
+            if(celdaActual.length === 0 ){
+                this.props.celdaStore.push({ id:i , idFila: this.props.index});
+            }
+            
         }
         this.celdas= celdas;
         return celdas;

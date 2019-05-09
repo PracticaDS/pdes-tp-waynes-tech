@@ -7,3 +7,4 @@ export const ponerMaquina = (boton: ButtonType, idCelda: Id, idFila: Id): Maquin
     type: 'AGREGAR_MAQUINA', boton, idCelda, idFila
   };
 };
+

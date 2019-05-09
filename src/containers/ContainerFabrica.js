@@ -7,7 +7,7 @@ export const mapStateToProps = (state: State) => {
     return {
        configFabrica: state.configFabrica,
        botones: state.botones,
-       botonSeleccionado: state.botonSeleccionado
+       celdas: state.celdas
     };
 };
 

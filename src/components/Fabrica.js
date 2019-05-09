@@ -4,29 +4,31 @@ import './Fabrica.css';
 import { Fila } from './Fila';
 import type {ConfigFabrica} from '../types/GameState';
 import type { Buttons }     from '../types/ButtonType';
+import type { Celdas }     from '../types/CeldaType';
 import React from 'react';
 
 export type Props = {
   configFabrica: ConfigFabrica,
-  botones: Buttons
+  botones: Buttons,
+  celdas: Celdas
 };
 
-export const Fabrica = ({ configFabrica, botones }: Props) => (
+export const Fabrica = ({ configFabrica, botones, celdas }: Props) => (
   <div className="grilla">
 
-      { dibujarGrilla(configFabrica.numeroFilas, configFabrica.numeroColumnas, botones)}
+      { dibujarGrilla(configFabrica.numeroFilas, configFabrica.numeroColumnas, botones, celdas)}
   
   </div>  
 ); 
 
-const dibujarGrilla = (numeroFilas: CantFilas, numeroColumnas: CantColumnas, botones: Buttons) => {
+const dibujarGrilla = (numeroFilas: CantFilas, numeroColumnas: CantColumnas, botones: Buttons, celdas: Celdas) => {
   
   let botonSeleccionado = getBotonSelected(botones);
 
   var grilla = [];
   for (var i = 1; i <= numeroFilas; i++) {
     grilla.push(
-      <Fila key={i} index={i} columnas={numeroColumnas} boton={botonSeleccionado} />
+      <Fila key={i} index={i} columnas={numeroColumnas} boton={botonSeleccionado} celdaStore={celdas} />
     );
   }
   return grilla;
@@ -34,7 +36,7 @@ const dibujarGrilla = (numeroFilas: CantFilas, numeroColumnas: CantColumnas, bot
 
 const getBotonSelected = (buttons: Buttons): ButtonType => {
   let boton =  buttons.filter(f => f.press === 'selected');
-  return (boton === [] ? undefined : boton[0]);
+  return (boton.length === 0 ? undefined : boton[0]);
 };
 
 export default Fabrica;

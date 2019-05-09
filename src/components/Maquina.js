@@ -1,9 +1,11 @@
 import React from 'react';
 import './Maquina.css';
 import type {Image} from './Utils';
+import type {MaquinaDireccion} from './Maquina';
 
 export type Props = {
-    image: Image
+    image: Image,
+    direccion: MaquinaDireccion
   };
 
 export const Maquina = ({image}): Props => (

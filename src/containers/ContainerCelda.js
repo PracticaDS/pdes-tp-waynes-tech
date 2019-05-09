@@ -13,10 +13,8 @@ export const mapStateToProps = (state: State) => {
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-       // onCeldaClick: boton, idCelda, idFila => {
-         //   dispatch(ponerMaquina(boton, idCelda, idFila));
-         onClick: (boton, fila, columna) => {
-           dispatch(ponerMaquina(boton, fila, columna));
+         onClickCelda: (boton, columna, fila) => {
+           dispatch(ponerMaquina(boton, columna, fila));
       }
     };
 };
