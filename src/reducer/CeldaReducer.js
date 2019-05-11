@@ -12,6 +12,8 @@ const celdas = (state: Celdas = [], action: MaquinaAction): Celdas => {
         return ponerMaquina(state, action.boton, action.idCelda, action.idFila);
       case 'ROTAR':
         return rotarMaquina(state, action.boton, action.idCelda, action.idFila);
+      case 'BORRAR':
+        return borrarMaquina(state, action.boton, action.idCelda, action.idFila);
       default:
         return state;
     }
@@ -26,19 +28,15 @@ const rotarMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id):
       if(maquina !== undefined){
         switch (maquina.direccion) {
           case 'NORTE':
-          console.log("cambia a este");
             maquina.direccion = 'ESTE';
             break;
           case 'ESTE':
-            console.log("cambia a sur");
             maquina.direccion = 'SUR';
             break;
           case 'SUR':
-            console.log("cambia a oeste");
             maquina.direccion = 'OESTE';
             break;
           case 'OESTE':
-            console.log("cambia a norte");
             maquina.direccion = 'NORTE';
             break;
           default:
@@ -61,6 +59,17 @@ const ponerMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id):
         } 
     }
     return celdas;
+};
+
+/* BORRA UNA MAQUINA */
+const borrarMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id): Celdas => {
+
+  let busquedaCelda =  celdas.filter(c => c.id === columna && c.idFila === fila);
+  if(busquedaCelda.length !== 0  &&  boton !== undefined){
+      let celdaSelected = busquedaCelda[0];
+      celdaSelected.maquina = undefined
+  }
+  return celdas;
 };
 
 
