@@ -28,15 +28,19 @@ const rotarMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id):
           case 'NORTE':
           console.log("cambia a este");
             maquina.direccion = 'ESTE';
+            break;
           case 'ESTE':
             console.log("cambia a sur");
             maquina.direccion = 'SUR';
+            break;
           case 'SUR':
             console.log("cambia a oeste");
             maquina.direccion = 'OESTE';
+            break;
           case 'OESTE':
             console.log("cambia a norte");
             maquina.direccion = 'NORTE';
+            break;
           default:
          
         }

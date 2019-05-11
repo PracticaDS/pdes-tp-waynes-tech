@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 //import ReactDOM from 'react-dom';
 import './index.css';
@@ -13,7 +15,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 serviceWorker.unregister();
 */
 
-// @flow
+
 import { initialState } from './constants';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
