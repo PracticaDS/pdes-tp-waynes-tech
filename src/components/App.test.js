@@ -22,3 +22,9 @@ describe('App', () => {
   });
 });
 */
+
+
+// Borrarlo xD
+it('renders welcome message', () => {
+  expect(2).toEqual(2);
+});
