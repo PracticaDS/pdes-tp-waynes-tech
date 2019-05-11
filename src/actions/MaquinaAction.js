@@ -4,7 +4,7 @@ import type { MaquinaAction } from '../types/Maquina';
 
 export const ponerMaquina = (boton: ButtonType, idCelda: Id, idFila: Id): MaquinaAction => {
   return {
-    type: 'AGREGAR_MAQUINA', boton, idCelda, idFila
+    type: boton.action, boton, idCelda, idFila
   };
 };
 
