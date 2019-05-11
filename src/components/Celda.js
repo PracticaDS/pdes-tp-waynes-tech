@@ -16,19 +16,12 @@ export type Props = {
 
 export const Celda = ({ onClickCelda, boton, id, fila, maquina}: Props) => (
     <div className="celda" onClick={() => onClickCelda(boton, id, fila)} >
-        { maquina !== undefined ? <Maquina image={maquina.image} direccion={maquina.direccion}></Maquina> : '' }
+        { maquina !== undefined ? <Maquina image={maquina.image} 
+                                           direccion={maquina.direccion} >
+                                  </Maquina> : '' }
     </div>    
 );
 
-/*
-    if(maquina !== null){
-        <div className="celda" onClick={() => onClickCelda(boton, id, fila)} >
-            <Maquina image={maquina.image} direccion={maquina.direccion}></Maquina>
-        </div>
-    }else{
-       <div className="celda" onClick={() => onClickCelda(boton, id, fila)} />
-    }
-*/
 
 
 export default Celda;
