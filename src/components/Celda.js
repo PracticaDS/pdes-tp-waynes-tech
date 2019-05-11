@@ -17,7 +17,8 @@ export type Props = {
 export const Celda = ({ onClickCelda, boton, id, fila, maquina}: Props) => (
     <div className="celda" onClick={() => onClickCelda(boton, id, fila)} >
         { maquina !== undefined ? <Maquina image={maquina.image} 
-                                           direccion={maquina.direccion} >
+                                           direccion={maquina.direccion}
+                                           mover={maquina.mover}>
                                   </Maquina> : '' }
     </div>    
 );

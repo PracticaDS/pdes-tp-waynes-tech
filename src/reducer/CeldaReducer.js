@@ -14,10 +14,50 @@ const celdas = (state: Celdas = [], action: MaquinaAction): Celdas => {
         return rotarMaquina(state, action.boton, action.idCelda, action.idFila);
       case 'BORRAR':
         return borrarMaquina(state, action.boton, action.idCelda, action.idFila);
+      case 'MOVER':
+        return moverMaquina(state, action.boton, action.idCelda, action.idFila);
       default:
         return state;
     }
 };
+
+const moverMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id): Celdas => {
+
+  let busquedaCelda =  celdas.filter(c => c.id === columna && c.idFila === fila);
+  if(busquedaCelda.length !== 0  &&  boton !== undefined){
+      let celdaSelected = busquedaCelda[0];
+      //La celda tiene maquina?
+      //Si tiene
+      if(celdaSelected.maquina !== undefined){
+        celdaSelected.maquina.mover = true;
+      }else{
+      //No tiene
+        //busco la celda que tiene una maquina para mover
+        let busquedaCeldaConMaquina =  celdas.filter(c => c.maquina !== undefined && c.maquina.mover === true);
+        //tomo la ultima maquina tocada para mover
+        let celdaConMaquina = busquedaCeldaConMaquina[busquedaCeldaConMaquina.length - 1];
+        //se la pongo a la que no tiene
+        if(celdaSelected.maquina !== undefined){
+          celdaSelected.maquina = {
+            image: celdaConMaquina.maquina.image,
+            direccion: celdaConMaquina.maquina.direccion,
+            mover: false
+          };
+          //se la saco a la que tenia
+          celdaConMaquina.maquina = undefined; 
+          //vuelvo a dejar en caso de que haya mquinas olvidadas a mover a un estado inicial
+          volverEstadoInicialMaquinas(busquedaCeldaConMaquina);
+        }
+      }
+  }
+  return celdas;
+};
+
+const volverEstadoInicialMaquinas = (celdas :Celdas) => {
+  for (var i=0; i<= celdas; i++){
+    celdas[0].maquina.mover = false;
+  }
+}
 
 /* ROTA UNA MAQUINA */
 const rotarMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id): Celdas => {
@@ -55,7 +95,8 @@ const ponerMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id):
         let celdaSelected = busquedaCelda[0];
         celdaSelected.maquina = {
           image: boton.image,
-          direccion: 'SUR'
+          direccion: 'SUR',
+          mover: false
         } 
     }
     return celdas;
