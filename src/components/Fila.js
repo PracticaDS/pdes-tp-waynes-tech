@@ -26,21 +26,26 @@ export class Fila extends Component {
     dibujarCeldas(){
         var celdas = [];
         for (var i=1; i<= this.props.columnas; i++){
+
+           let maquina = undefined;
+           /* Se setean las celdas en el estore */
+           let celdaActual =  this.props.celdaStore.filter(c => c.id === i && c.idFila === this.props.index);
+            /* Si la celda no existe, se agrega al store */
+           if(celdaActual.length === 0 ){
+                this.props.celdaStore.push({ id:i , idFila: this.props.index});
+           }else{
+               /* Si la celda existe, se obtiene si tiene una maquina */
+               maquina = celdaActual[0].maquina;
+           }
+
            celdas.push(
                 <Celda key={i}
                        id={i} 
                        boton={this.props.boton}  
                        fila={this.props.index} 
-                       columna={i} />
-               
+                       columna={i} 
+                       maquina={maquina}/>
             )
-            
-            /* Se setean las celdas en el estore */
-            let celdaActual =  this.props.celdaStore.filter(c => c.id === i && c.idFila === this.props.index);
-            if(celdaActual.length === 0 ){
-                this.props.celdaStore.push({ id:i , idFila: this.props.index});
-            }
-            
         }
         this.celdas= celdas;
         return celdas;

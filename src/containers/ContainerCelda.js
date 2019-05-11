@@ -3,13 +3,15 @@ import Celda          from '../components/Celda';
 import type { State } from '../types';
 import { ponerMaquina } from '../actions/MaquinaAction';
 
-/*
+
 export const mapStateToProps = (state: State) => {
     return {
-       botones: state.botones
+       botones: state.botones,
+       celdas: state.celdas,
+       configFabrica: state.configFabrica
     };
 };
-*/
+
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
@@ -20,7 +22,7 @@ export const mapDispatchToProps = (dispatch: Dispatch) => {
 };
 
 const connector = connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 );
   

@@ -7,7 +7,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const celdas = (state: Celdas = [], action: MaquinaAction): Celdas => {
-
     switch (action.type) {
       case 'AGREGAR_MAQUINA':
         return ponerMaquina(state, action.boton, action.idCelda, action.idFila);
@@ -19,13 +18,12 @@ const celdas = (state: Celdas = [], action: MaquinaAction): Celdas => {
   const ponerMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id): Celdas => {
 
     let busquedaCelda =  celdas.filter(c => c.id === columna && c.idFila === fila);
-    if(busquedaCelda.length !== 0 ){
+    if(busquedaCelda.length !== 0  &&  boton !== undefined){
         let celdaSelected = busquedaCelda[0];
         celdaSelected.maquina = {
           image: boton.image,
           direccion: 'SUR'
         } 
-        //this.props.celdaStore.push({ id:i , idFila: this.props.index});
     }
     return celdas;
   
