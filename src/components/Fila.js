@@ -17,7 +17,7 @@ export class Fila extends Component {
 
     render () {
         return (
-        <div className="grilla">
+        <div className="fila">
            { this.dibujarCeldas() }
         </div>   
         )

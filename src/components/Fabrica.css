@@ -1,4 +1,8 @@
 .grilla {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: repeat(10, 35px);
+    align-items: center;
+    grid-template-rows: auto;
+    align-items: center;
+    justify-content: center;
   }
