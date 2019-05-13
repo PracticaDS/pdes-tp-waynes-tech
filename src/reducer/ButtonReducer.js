@@ -10,6 +10,7 @@ const selectButton = (botones: Buttons, id: Id): Buttons => {
 
 
 const botones = (state: Buttons = [], action: Action): Buttons => {
+
   switch (action.type) {
     case '@@INIT':
       return state;
@@ -19,5 +20,6 @@ const botones = (state: Buttons = [], action: Action): Buttons => {
       return state;
   }
 };
+
 
 export default botones;

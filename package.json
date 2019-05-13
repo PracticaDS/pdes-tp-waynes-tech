@@ -40,6 +40,14 @@
     "@storybook/addons": "^5.0.10",
     "@storybook/cli": "^5.0.10",
     "@storybook/react": "^5.0.10",
-    "babel-loader": "^8.0.5"
-  }
+    "babel-loader": "^8.0.5",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "react-test-renderer": "^16.8.6",
+    "redux-mock-store": "^1.5.3"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js"
+   }
+  
 }

@@ -9,14 +9,19 @@ import boton_transporter from './components/images/transporter.PNG';
 
 export const initialState = {
     botones: [
-        {image:boton_start,       press:"unselected", id:1},
-        {image:boton_seller,      press:"unselected", id:2},
-        {image:boton_crafter,     press:"unselected", id:3},
-        {image:boton_furnace,     press:"unselected", id:4},
-        {image:boton_transporter, press:"unselected", id:5},
-        {image:boton_borrar,      press:"unselected", id:6},
-        {image:boton_rotar,       press:"unselected", id:7},
-        {image:boton_move,        press:"unselected", id:8}
-    ]
+        {image:boton_start,       press:"unselected", id:1, action:"AGREGAR_MAQUINA"},
+        {image:boton_seller,      press:"unselected", id:2, action:"AGREGAR_MAQUINA"},
+        {image:boton_crafter,     press:"unselected", id:3, action:"AGREGAR_MAQUINA"},
+        {image:boton_furnace,     press:"unselected", id:4, action:"AGREGAR_MAQUINA"},
+        {image:boton_transporter, press:"unselected", id:5, action:"AGREGAR_MAQUINA"},
+        {image:boton_borrar,      press:"unselected", id:6, action:"BORRAR"},
+        {image:boton_rotar,       press:"unselected", id:7, action:"ROTAR"},
+        {image:boton_move,        press:"unselected", id:8, action:"MOVER"}
+    ],
+    configFabrica: {
+       numeroFilas: 10,
+       numeroColumnas: 8
+    },
+    celdas: []
   };
   
