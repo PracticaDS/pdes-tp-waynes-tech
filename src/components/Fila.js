@@ -57,4 +57,3 @@ Fila.propTypes = {
     index : PropTypes.number,
     columnas: PropTypes.number
 }
-
