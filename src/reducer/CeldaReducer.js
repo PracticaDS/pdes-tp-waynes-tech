@@ -1,10 +1,6 @@
 import { Id, Buttons } from '../types/ButtonType';
 import type { MaquinaAction, Image, Celdas } from '../types';
-import { mount } from 'enzyme';
-import  Celda  from '../components/Celda';
-import  Fabrica  from '../components/Fabrica';
-import React from 'react';
-import ReactDOM from 'react-dom';
+
 
 const celdas = (state: Celdas = [], action: MaquinaAction): Celdas => {
     switch (action.type) {
@@ -21,96 +17,94 @@ const celdas = (state: Celdas = [], action: MaquinaAction): Celdas => {
     }
 };
 
-const moverMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id): Celdas => {
-
-  let busquedaCelda =  celdas.filter(c => c.id === columna && c.idFila === fila);
-  if(busquedaCelda.length !== 0  &&  boton !== undefined){
-      let celdaSelected = busquedaCelda[0];
-      //La celda tiene maquina?
-      //Si tiene
-      if(celdaSelected.maquina !== undefined){
-        celdaSelected.maquina.mover = true;
-      }else{
-      //No tiene
-        //busco la celda que tiene una maquina para mover
-        let busquedaCeldaConMaquina =  celdas.filter(c => c.maquina !== undefined && c.maquina.mover === true);
-        //tomo la ultima maquina tocada para mover
-        let celdaConMaquina = busquedaCeldaConMaquina[busquedaCeldaConMaquina.length - 1];
-        //se la pongo a la que no tiene
-        if(celdaSelected.maquina !== undefined){
-          celdaSelected.maquina = {
-            image: celdaConMaquina.maquina.image,
-            direccion: celdaConMaquina.maquina.direccion,
-            mover: false
-          };
-          //se la saco a la que tenia
-          celdaConMaquina.maquina = undefined; 
-          //vuelvo a dejar en caso de que haya mquinas olvidadas a mover a un estado inicial
-          volverEstadoInicialMaquinas(busquedaCeldaConMaquina);
-        }
-      }
-  }
-  return celdas;
-};
-
-const volverEstadoInicialMaquinas = (celdas :Celdas) => {
-  for (var i=0; i<= celdas; i++){
-    celdas[0].maquina.mover = false;
+const getCeldaActual = (celdas: Celdas, columna: Id, fila: Id): Celda => {
+  let celdaActualArray =  celdas.filter(c => c.id === columna && c.idFila === fila);
+  if(celdaActualArray.length !== 0){
+    return celdaActualArray[0];
+  }else{
+    return undefined;
   }
 }
 
+const miraSiSacaMaquina = (celdaConMaquina: Celda, celdaActual: Celda): Celda => {
+  if(celdaConMaquina.id === celdaActual.id && celdaConMaquina.idFila === celdaActual.idFila && celdaActual.maquina.mover){
+    celdaActual.maquina = undefined;
+  }
+  return celdaActual;
+}
+
+const miraSiPoneMaquina = (celda: Celda, columna: Id, fila: Id, celdaConMaquina: Celda): Celda => {
+  if(celda.id === columna && celda.idFila === fila && celdaConMaquina !== undefined){
+    celda.maquina = {direccion: celdaConMaquina.maquina.direccion, 
+                     image: celdaConMaquina.maquina.image, 
+                     mover: false}
+  }
+  return celda;
+}
+
+const moverMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id): Celdas => {
+    const celdaActual = getCeldaActual(celdas,columna, fila);
+    if(celdaActual.maquina !== undefined ){
+       celdaActual.maquina.mover = true;
+       return celdas.map(c => ( c.id === columna && c.idFila === fila ? 
+       celdaActual : c ));
+    }else{
+       
+       let busquedaCeldaConMaquinaAMover =  celdas.filter(c => c.maquina !== undefined && c.maquina.mover);
+       let celdaConMaquina = busquedaCeldaConMaquinaAMover[busquedaCeldaConMaquinaAMover.length - 1];
+       if(celdaConMaquina !== undefined){
+        const celdaCopia = {
+          id: celdaConMaquina.id,
+          idFila: celdaConMaquina.idFila,
+          maquina: {
+            direccion: celdaConMaquina.maquina.direccion,
+            image: celdaConMaquina.maquina.image
+          }
+        } 
+        return celdas.map(c => ( c.maquina === undefined ? 
+        miraSiPoneMaquina(c, columna, fila,celdaCopia ) : 
+        miraSiSacaMaquina(celdaConMaquina, c)));
+       }
+       return celdas;
+    }
+};
+
+
 /* ROTA UNA MAQUINA */
 const rotarMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id): Celdas => {
-  let busquedaCelda =  celdas.filter(c => c.id === columna && c.idFila === fila);
-  if(busquedaCelda.length !== 0  &&  boton !== undefined){
-      let celdaSelected = busquedaCelda[0];
-      let maquina = celdaSelected.maquina;
-      if(maquina !== undefined){
-        switch (maquina.direccion) {
-          case 'NORTE':
-            maquina.direccion = 'ESTE';
-            break;
-          case 'ESTE':
-            maquina.direccion = 'SUR';
-            break;
-          case 'SUR':
-            maquina.direccion = 'OESTE';
-            break;
-          case 'OESTE':
-            maquina.direccion = 'NORTE';
-            break;
-          default:
-         
-        }
-      }
+  return celdas.map(c => ( c.id === columna && c.idFila === fila && c.maquina !== undefined ? 
+    { ...c, maquina: cambiarPosicionMaquina(c.maquina) } : c ));
+}
+
+const cambiarPosicionMaquina = (maquina: MaquinaType): MaquinaType =>{
+  switch (maquina.direccion) {
+    case 'NORTE':
+      maquina.direccion = 'ESTE';
+      break;
+    case 'ESTE':
+      maquina.direccion = 'SUR';
+      break;
+    case 'SUR':
+      maquina.direccion = 'OESTE';
+      break;
+    case 'OESTE':
+      maquina.direccion = 'NORTE';
+      break;
+    default:
   }
-  return celdas;
+  return maquina;
 }
 
 /* PONE UNA MAQUINA */
 const ponerMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id): Celdas => {
-
-    let busquedaCelda =  celdas.filter(c => c.id === columna && c.idFila === fila);
-    if(busquedaCelda.length !== 0  &&  boton !== undefined){
-        let celdaSelected = busquedaCelda[0];
-        celdaSelected.maquina = {
-          image: boton.image,
-          direccion: 'SUR',
-          mover: false
-        } 
-    }
-    return celdas;
+    return celdas.map(c => ( c.id === columna && c.idFila === fila ? 
+    { ...c, maquina: { image: boton.image, direccion: 'SUR', mover: false }} : c ));
 };
 
 /* BORRA UNA MAQUINA */
 const borrarMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id): Celdas => {
-
-  let busquedaCelda =  celdas.filter(c => c.id === columna && c.idFila === fila);
-  if(busquedaCelda.length !== 0  &&  boton !== undefined){
-      let celdaSelected = busquedaCelda[0];
-      celdaSelected.maquina = undefined
-  }
-  return celdas;
+  return celdas.map(c => ( c.id === columna && c.idFila === fila ? 
+    { ...c, maquina: undefined } : c ));
 };
 
 
