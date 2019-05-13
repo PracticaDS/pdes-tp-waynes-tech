@@ -1,4 +1,3 @@
-/*
 import React from 'react';
 import configureStore from 'redux-mock-store';
 import { shallow } from 'enzyme';
@@ -19,10 +18,4 @@ describe('App', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
-*/
 
-
-// Borrarlo xD
-it('renders welcome message', () => {
-  expect(2).toEqual(2);
-});

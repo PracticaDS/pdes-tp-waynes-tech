@@ -1,7 +1,7 @@
 import React from 'react';
 import './Celda.css';
-import type {BotonType} from '../types/BotonType';
-import type {Image, Id} from '../types/Utils';
+import type {ButtonType} from '../types/ButtonType';
+import type {Id} from '../types/Utils';
 import type {MaquinaType} from '../types/Maquina';
 import Maquina from './Maquina';
 

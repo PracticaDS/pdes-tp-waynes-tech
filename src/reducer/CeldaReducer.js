@@ -1,5 +1,5 @@
-import { Id, Buttons } from '../types/ButtonType';
-import type { MaquinaAction, Image, Celdas } from '../types';
+import { Id } from '../types/ButtonType';
+import type { MaquinaAction, Celdas } from '../types';
 
 
 const celdas = (state: Celdas = [], action: MaquinaAction): Celdas => {

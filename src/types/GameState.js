@@ -1,4 +1,4 @@
-import type {Buttons, ButtonType} from './ButtonType';
+import type {Buttons} from './ButtonType';
 import type {Celdas} from './CeldaType';
 
 export type CantFilas = number;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 //import { Celda } from './Celda';
 import  Celda  from '../containers/ContainerCelda';
-import type { ButtonType } from '../types/ButtonType';
+//import type { ButtonType } from '../types/ButtonType';
 
 import './Fila.css';
 
