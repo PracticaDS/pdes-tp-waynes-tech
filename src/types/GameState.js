@@ -9,10 +9,19 @@ export type ConfigFabrica = {
     +numeroColumnas: CantColumnas
 }
 
+export type DetalleMaquina = string;
+export type CostoMaquina = number;
+
+export type StatusInfoBox = {
+    +detalle: DetalleMaquina,
+    +costo: CostoMaquina
+}
+
 export type GameState = {
     +botones: Buttons,
     +configFabrica: ConfigFabrica,
-    +celdas: Celdas
-    
+    +celdas: Celdas,
+    +statusInfoBox: StatusInfoBox
 };
+
 

@@ -6,10 +6,22 @@ export class InfoBox extends Component {
   render() {
     return (
         <div className="Infobox">
-            <h2>infobox </h2>
+            <h3>Detalles</h3>
+            <div className="InfoBoxContenido">
+                <div>
+                  {this.props.statusInfoBox.detalle}
+                </div>
+                <div>
+                  <div>
+                  {(this.props.statusInfoBox.costo > 0 ? this.props.statusInfoBox.costo : '')}
+                  </div>
+                </div>
+            </div>
         </div>
     )
   }
 }
+
+export default InfoBox;
 
 
