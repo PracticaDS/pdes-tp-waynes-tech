@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/pdes-tp-waynes-tech/static/media/move.cbfcb2fb.PNG"
   },
   {
-    "revision": "c2c726730ba2d639275b",
-    "url": "/pdes-tp-waynes-tech/static/css/main.eae3bb3b.chunk.css"
+    "revision": "9c4b29ebe51e6aec1bd0",
+    "url": "/pdes-tp-waynes-tech/static/css/main.acce9e7b.chunk.css"
   },
   {
     "revision": "a920b6e595fec4ed8bb5",
     "url": "/pdes-tp-waynes-tech/static/js/runtime~main.eb6dddf5.js"
   },
   {
-    "revision": "2acb7242cfc04d69a58f",
-    "url": "/pdes-tp-waynes-tech/static/js/2.e1e70e4a.chunk.js"
+    "revision": "83b5eee20cc5454497cd",
+    "url": "/pdes-tp-waynes-tech/static/js/2.7e935688.chunk.js"
   },
   {
     "revision": "6e7a49f40af2d9d7080f68c833299d78",
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/pdes-tp-waynes-tech/static/media/rotate.d45efe18.PNG"
   },
   {
-    "revision": "c2c726730ba2d639275b",
-    "url": "/pdes-tp-waynes-tech/static/js/main.66dd0b23.chunk.js"
+    "revision": "9c4b29ebe51e6aec1bd0",
+    "url": "/pdes-tp-waynes-tech/static/js/main.fbce691c.chunk.js"
   },
   {
     "revision": "42bc229719c912b352f4c25a714c2055",
@@ -44,11 +44,11 @@ self.__precacheManifest = [
     "url": "/pdes-tp-waynes-tech/static/media/seller.3d538c9e.PNG"
   },
   {
-    "revision": "0c46748fe168eafe811ddfe7e9805bbf",
-    "url": "/pdes-tp-waynes-tech/static/media/transporter.0c46748f.PNG"
+    "revision": "00687f2e997e812bdddbc4cb6f3f212e",
+    "url": "/pdes-tp-waynes-tech/static/media/transporter.00687f2e.PNG"
   },
   {
-    "revision": "d8d747ff082328084507e7b8ee3cc8c3",
+    "revision": "051b16107322f99e243967716c12c628",
     "url": "/pdes-tp-waynes-tech/index.html"
   }
 ];
