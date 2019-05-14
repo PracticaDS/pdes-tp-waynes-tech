@@ -28,7 +28,7 @@ const dibujarGrilla = (numeroFilas: CantFilas, numeroColumnas: CantColumnas, bot
   var grilla = [];
   for (var i = 1; i <= numeroFilas; i++) {
     grilla.push(
-      <Fila key={i} index={i} columnas={numeroColumnas} boton={botonSeleccionado} celdaStore={celdas} />
+      <Fila key={i} index={i} columnas={numeroColumnas} boton={botonSeleccionado} celdaStore={celdas} filas={numeroFilas} />
     );
   }
   return grilla;
