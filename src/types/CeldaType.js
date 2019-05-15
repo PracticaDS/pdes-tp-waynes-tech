@@ -1,4 +1,4 @@
-import type import MaquinaType from "../components/Maquina";
+import type MaquinaType from "../components/Maquina";
 import {Id, Image} from './Utils';
 
 
