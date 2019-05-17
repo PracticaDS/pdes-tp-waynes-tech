@@ -16,14 +16,15 @@ export type Props = {
     celdas: Celdas
 }
 
-export const Celda = ({ onClickCelda, boton, id, fila, celdas}: Props) => (
-   
-    <div className="celda" onClick={() => onClickCelda(boton, id, fila)} >
+export const Celda = ({ onClickCelda, boton, id, fila, celdas, statusInfoBox}: Props) => (
+    
+    <div className="celda" onClick={() => onClickCelda(boton, id, fila, statusInfoBox.ganancias)} >
         { dibujarMaquina(celdas, id, fila) }                             
     </div>    
 );
 
 const dibujarMaquina = (celdas: Celdas, columna: Id, fila: Id ) =>  {
+
     let celdaActual =  celdas.filter(c => c.id === columna && c.idFila === fila);
     if(celdaActual.length !== 0 && celdaActual[0].maquina !== undefined ){
         return <Maquina image={celdaActual[0].maquina.image} 

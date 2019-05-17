@@ -8,15 +8,16 @@ export const mapStateToProps = (state: State) => {
     return {
        botones: state.botones,
        celdas: state.celdas,
-       configFabrica: state.configFabrica
+       configFabrica: state.configFabrica,
+       statusInfoBox: state.statusInfoBox
     };
 };
 
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-         onClickCelda: (boton, columna, fila) => {
-           dispatch(ponerMaquina(boton, columna, fila));
+         onClickCelda: (boton, columna, fila, ganancias) => {
+           dispatch(ponerMaquina(boton, columna, fila, ganancias));
       }
     };
 };

@@ -1,11 +1,12 @@
 import { Id } from '../types/ButtonType';
 import type { MaquinaAction, Celdas } from '../types';
+import type { Ganancias } from '../types/GameState';
 
 
 const celdas = (state: Celdas = [], action: MaquinaAction): Celdas => {
     switch (action.type) {
       case 'AGREGAR_MAQUINA':
-        return ponerMaquina(state, action.boton, action.idCelda, action.idFila);
+        return ponerMaquina(state, action.boton, action.idCelda, action.idFila, action.ganancias);
       case 'ROTAR':
         return rotarMaquina(state, action.boton, action.idCelda, action.idFila);
       case 'BORRAR':
@@ -96,9 +97,14 @@ const cambiarPosicionMaquina = (maquina: MaquinaType): MaquinaType =>{
 }
 
 /* PONE UNA MAQUINA */
-const ponerMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id): Celdas => {
-    return celdas.map(c => ( c.id === columna && c.idFila === fila ? 
-    { ...c, maquina: { image: boton.image, direccion: 'SUR', mover: false }} : c ));
+const ponerMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id, ganancias: Ganancias): Celdas => {
+    if(ganancias >= boton.price){
+      return celdas.map(c => ( c.id === columna && c.idFila === fila ? 
+        { ...c, maquina: { image: boton.image, direccion: 'SUR', mover: false }} : c ));
+    }else{
+      return celdas;
+    }
+   
 };
 
 /* BORRA UNA MAQUINA */

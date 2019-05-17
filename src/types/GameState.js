@@ -3,6 +3,7 @@ import type {Celdas} from './CeldaType';
 
 export type CantFilas = number;
 export type CantColumnas = number;
+export type Ganancias = number;
 
 export type ConfigFabrica = {
     +numeroFilas: CantFilas,
@@ -14,13 +15,14 @@ export type CostoMaquina = number;
 
 export type StatusInfoBox = {
     +detalle: DetalleMaquina,
-    +costo: CostoMaquina
+    +costo: CostoMaquina,
+    +ganancias: Ganancias
 }
 
 export type GameState = {
     +botones: Buttons,
     +configFabrica: ConfigFabrica,
     +celdas: Celdas,
-    +statusInfoBox: StatusInfoBox,
-    +ganancias: 5000
+    +statusInfoBox: StatusInfoBox
+    
 };
