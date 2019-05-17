@@ -25,7 +25,8 @@ export const initialState = {
     celdas: [],
     statusInfoBox: {
         detalle: "",
-        costo: 0
+        costo: 0,
+        ganancias: 5000
     }
   };
   

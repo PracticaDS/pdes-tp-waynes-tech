@@ -21,7 +21,6 @@ export type GameState = {
     +botones: Buttons,
     +configFabrica: ConfigFabrica,
     +celdas: Celdas,
-    +statusInfoBox: StatusInfoBox
+    +statusInfoBox: StatusInfoBox,
+    +ganancias: 5000
 };
-
-

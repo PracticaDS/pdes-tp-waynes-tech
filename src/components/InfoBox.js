@@ -8,12 +8,13 @@ export class InfoBox extends Component {
         <div className="Infobox">
             <h3>Detalles</h3>
             <div className="InfoBoxContenido">
+              <h2> Ganancias: {this.props.statusInfoBox.ganancias}</h2>
                 <div>
                   {this.props.statusInfoBox.detalle}
                 </div>
                 <div>
                   <div>
-                  {(this.props.statusInfoBox.costo > 0 ? this.props.statusInfoBox.costo : '')}
+                  {(this.props.statusInfoBox.costo > 0 ? this.props.statusInfoBox.costo : '')}                  
                   </div>
                 </div>
             </div>
