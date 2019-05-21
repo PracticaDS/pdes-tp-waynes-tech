@@ -22,12 +22,19 @@ const restarGanancias = (state: StatusInfoBox, action: Action): StatusInfoBox =>
   return nuevoEstado;
 }
 
+const sumarGanancias = (state: StatusInfoBox, action: Action): StatusInfoBox => {
+
+  return state;
+}
+
 const statusInfoBox = (state: StatusInfoBox = {}, action: Action): StatusInfoBox => {
     switch (action.type) {
    case 'SELECT':
      return cambiarInfoBox(state, action);
    case 'AGREGAR_MAQUINA':
      return restarGanancias(state, action);
+   case 'TICK':
+     return sumarGanancias(state, action);
    default:
      return state;
  }

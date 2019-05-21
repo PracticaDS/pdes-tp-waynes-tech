@@ -9,3 +9,9 @@ export const ponerMaquina = (boton: ButtonType, idCelda: Id, idFila: Id, gananci
   };
 };
 
+export const tick = (): MaquinaAction => {
+  return {
+    type: 'TICK'
+  };
+};
+
