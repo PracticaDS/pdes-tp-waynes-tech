@@ -2,22 +2,7 @@ import { connect }    from 'react-redux';
 import Celda          from '../components/Celda';
 import type { State, Dispatch } from '../types';
 import { ponerMaquina, tick } from '../actions/MaquinaAction';
-import React from 'react';
 
-export class ContainerCelda extends React.Component {
-
-
-    componentDidMount() {
-      
-
-    }
-  
-    render() {
-      return (
-         <div></div>
-      )
-    }
-  }
 
 
 export const mapStateToProps = (state: State) => {
