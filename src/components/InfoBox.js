@@ -8,13 +8,13 @@ export class InfoBox extends Component {
         <div className="Infobox">
             <h3>Detalles</h3>
             <div className="InfoBoxContenido">
-              <h2> Ganancias: {"$ "+this.props.statusInfoBox.ganancias + ",00"}</h2>
+              <h2> Ganancias: {"$ "+this.props.gameState.statusInfoBox.ganancias + ",00"}</h2>
                 <div>
-                  {this.props.statusInfoBox.detalle}
+                  {this.props.gameState.statusInfoBox.detalle}
                 </div>
                 <div>
                   <div>
-                  {(this.props.statusInfoBox.costo > 0 ? "$ "+this.props.statusInfoBox.costo + ",00" : '')}                  
+                  {(this.props.gameState.statusInfoBox.costo > 0 ? "$ "+this.props.gameState.statusInfoBox.costo + ",00" : '')}                  
                   </div>
                 </div>
             </div>

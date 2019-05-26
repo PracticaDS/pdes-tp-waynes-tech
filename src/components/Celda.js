@@ -2,6 +2,7 @@ import React from 'react';
 import './Celda.css';
 import type {ButtonType} from '../types/ButtonType';
 import type {Celdas} from '../types/CeldaType';
+import type {GameType} from '../types/GameState';
 import type {Id} from '../types/Utils';
 import type {MaquinaType} from '../types/Maquina';
 import Maquina from './Maquina';
@@ -13,13 +14,13 @@ export type Props = {
     fila: Id,
     id: Id,
     maquina: MaquinaType,
-    celdas: Celdas
+    gameState: GameType
 }
 
-export const Celda = ({ onClickCelda, boton, id, fila, celdas, statusInfoBox}: Props) => (
+export const Celda = ({ onClickCelda, boton, id, fila, gameState}: Props) => (
     
-    <div className="celda" onClick={() => onClickCelda(boton, id, fila, statusInfoBox.ganancias)} >
-        { dibujarMaquina(celdas, id, fila) }                             
+    <div className="celda" onClick={() => onClickCelda(boton, id, fila)} >
+        { dibujarMaquina(gameState.celdas, id, fila) }                             
     </div>    
 );
 

@@ -2,13 +2,11 @@ import { combineReducers } from 'redux';
 
 import botones from './ButtonReducer';
 import configFabrica from  './FabricaReducer';
-import celdas from './CeldaReducer';
-import statusInfoBox from './InfoBoxReducer';
+import gameState from './CeldaReducer';
 
 export default combineReducers({
-    botones, // TODO: add more reducers here if needed
+    botones, 
     configFabrica,
-    celdas,
-    statusInfoBox
+    gameState
  
 });

@@ -7,8 +7,7 @@ export const mapStateToProps = (state: State) => {
     return {
        configFabrica: state.configFabrica,
        botones: state.botones,
-       celdas: state.celdas,
-       statusInfoBox: state.statusInfoBox
+       gameState: state.gameState
     };
 };
 

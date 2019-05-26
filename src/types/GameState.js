@@ -19,10 +19,13 @@ export type StatusInfoBox = {
     +ganancias: Ganancias
 }
 
+export type GameType = {
+    +statusInfoBox: StatusInfoBox,
+    +celdas: Celdas
+}
+
 export type GameState = {
     +botones: Buttons,
     +configFabrica: ConfigFabrica,
-    +celdas: Celdas,
-    +statusInfoBox: StatusInfoBox
-    
+    +gameState: GameType
 };

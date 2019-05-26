@@ -22,11 +22,13 @@ export const initialState = {
        numeroFilas: 10,
        numeroColumnas: 8
     },
-    celdas: [],
-    statusInfoBox: {
-        detalle: "",
-        costo: 0,
-        ganancias: 5000
+    gameState: {
+        celdas: [],
+        statusInfoBox: {
+            detalle: "",
+            costo: 0,
+            ganancias: 5000
+        }
     }
   };
   

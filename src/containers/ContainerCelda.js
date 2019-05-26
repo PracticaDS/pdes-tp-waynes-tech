@@ -8,24 +8,23 @@ import { ponerMaquina, tick } from '../actions/MaquinaAction';
 export const mapStateToProps = (state: State) => {
     return {
        botones: state.botones,
-       celdas: state.celdas,
-       configFabrica: state.configFabrica,
-       statusInfoBox: state.statusInfoBox
+       gameState: state.gameState,
+       configFabrica: state.configFabrica
     }
 };
 
-const doActionsOnSelection = (boton, columna, fila, ganancias, dispatch) => {
+const doActionsOnSelection = (boton, columna, fila, dispatch) => {
  
     setInterval(() => { dispatch(tick());} , 3000);
     return(
-       ponerMaquina(boton, columna, fila, ganancias)
+       ponerMaquina(boton, columna, fila)
    )
 };
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-         onClickCelda: (boton, columna, fila, ganancias) => {
-           dispatch(doActionsOnSelection(boton, columna, fila, ganancias,dispatch))
+         onClickCelda: (boton, columna, fila) => {
+           dispatch(doActionsOnSelection(boton, columna, fila,dispatch))
       }
     };
 };

@@ -5,9 +5,10 @@ import type { State } from '../types';
 
 export const mapStateToProps = (state: State) => {
     return {
-       configFabrica: state.configFabrica,
+       gameState: state.gameState,
        botones: state.botones,
-       celdas: state.celdas
+       configFabrica: state.configFabrica
+
     };
 };
 
