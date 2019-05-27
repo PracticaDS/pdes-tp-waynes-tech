@@ -1,21 +1,133 @@
 import { Id } from '../types/ButtonType';
 import type { MaquinaAction, Celdas } from '../types';
+import type { GameType, StatusInfoBox } from '../types/GameState';
 
 
-const celdas = (state: Celdas = [], action: MaquinaAction): Celdas => {
+const gameState = (state: GameType = [], action: MaquinaAction): GameType => {
+   
     switch (action.type) {
       case 'AGREGAR_MAQUINA':
-        return ponerMaquina(state, action.boton, action.idCelda, action.idFila);
+        return newState(ponerMaquina(state.celdas, action.boton, action.idCelda, action.idFila, state.statusInfoBox)
+                        , state.statusInfoBox);
       case 'ROTAR':
-        return rotarMaquina(state, action.boton, action.idCelda, action.idFila);
+        return newState(rotarMaquina(state.celdas, action.boton, action.idCelda, action.idFila), state.statusInfoBox);
       case 'BORRAR':
-        return borrarMaquina(state, action.boton, action.idCelda, action.idFila);
+        return newState(borrarMaquina(state.celdas, action.boton, action.idCelda, action.idFila), state.statusInfoBox);
       case 'MOVER':
-        return moverMaquina(state, action.boton, action.idCelda, action.idFila);
+        return newState(moverMaquina(state.celdas, action.boton, action.idCelda, action.idFila), state.statusInfoBox);
+      case 'TICK':
+        return newState(tickMaquinas(state.celdas, state.statusInfoBox), state.statusInfoBox);
       default:
         return state;
     }
 };
+
+const newState = (celdas: Celdas, infoBox: StatusInfoBox): GameType => {
+  return {
+            celdas: celdas,
+            statusInfoBox: infoBox
+  }
+}
+
+/* ****************************************TICK DE MAQUINAS*************************************************** */
+
+const getNextCelda = (celda: Celda, celdas: Celdas): Celda => {
+
+        var x = celda.id;
+        var y = celda.idFila;
+        if(celda.maquina !== undefined){
+          switch (celda.maquina.direccion) {
+            case 'SUR':
+              x = x + 1;
+              break; 
+            case 'NORTE':
+              x = x - 1;
+              break;
+            case 'OESTE':
+              y = y - 1;
+              break;
+            default:
+              y = y + 1;
+              break;
+          }
+          return celdas.filter( c => c.id === x  && c.idFila === y )[0];
+        }else{
+          return celda;
+        }
+   
+}
+
+const transportar = (c: Celda, celdas: Celdas) => {
+          //Busca a la siguiente celda para ver si se los puede pasar
+          const nextCelda = getNextCelda(c, celdas);
+          //Si la siguiente celda tiene maquina, se los pasa
+          if(nextCelda !== undefined && nextCelda.maquina !== undefined){
+            console.log("maquina "+c.id+" "+c.idFila+" paso "+c.maquina.materiales+ 
+            " a maquina "+nextCelda.id+" "+nextCelda.idFila);
+            nextCelda.maquina.materiales = nextCelda.maquina.materiales + c.maquina.materiales;
+          }
+          //tenga proxima maquina o no, bota los materiales (se les caen :P) 
+          c.maquina.materiales = 0;
+}
+
+const moverMaterial = (c: Celda, celdas: Celdas, infoBox: StatusInfoBox): Celda => {
+
+    if(c.maquina.image.includes('starter')){
+        /* ********************************* STARTER ***********************************/
+        //Si la maquina es un starter, ve si tiene materiales
+        if(c.maquina.materiales > 0){
+            console.log("starter "+c.id+" "+c.idFila+" tiene "+c.maquina.materiales);
+            transportar(c, celdas);
+            console.log("starter "+c.id+" "+c.idFila+" tiene "+c.maquina.materiales);
+        }else{
+          //Si no tiene uno, lo crea y lo retiene
+          c.maquina.materiales = c.maquina.materiales + 1;
+        }
+        /* ********************************* STARTER ***********************************/
+    }else{
+      /* ********************************* TRANSPORTER **********************************/
+      if(c.maquina.image.includes('transporter')){
+        //Si la maquina tiene materiales, los trata de pasar a la siguiente celda
+        //Si no tiene, nada hace!
+        if(c.maquina.materiales > 0){
+          console.log("trans "+c.id+" "+c.idFila+" tiene "+c.maquina.materiales);
+          transportar(c, celdas);
+          console.log("trans "+c.id+" "+c.idFila+" tiene "+c.maquina.materiales);
+        }
+        /* ********************************* TRANSPORTER **********************************/
+      }else{
+        if(c.maquina.image.includes('seller')){
+          if(c.maquina.materiales > 0){
+             console.log("seller "+c.id+" "+c.idFila+" tiene "+c.maquina.materiales);
+             infoBox.ganancias = infoBox.ganancias + (c.maquina.materiales * 10);
+             c.maquina.materiales = 0;
+             console.log("seller "+c.id+" "+c.idFila+" tiene "+c.maquina.materiales);
+          }
+        }
+      }
+      
+    }
+    return c;
+}
+
+/* TICKEAR UNA MAQUINA */
+const tickMaquinas = (celdas: Celdas, infoBox: StatusInfoBox): Celdas => {
+   
+    const celdasNuevas = [];
+    for (var i = 0; i <= celdas.length - 1 ; i++) {
+ 
+      if(celdas[i].maquina !== undefined){
+        celdasNuevas.push(moverMaterial(celdas[i], celdas, infoBox));
+      }else{
+        celdasNuevas.push(celdas[i]);
+      }
+    }
+ 
+    return celdasNuevas;
+
+}
+
+/* ****************************************ACCIONES DE CELDAS*************************************************** */
 
 const getCeldaActual = (celdas: Celdas, columna: Id, fila: Id): Celda => {
   let celdaActualArray =  celdas.filter(c => c.id === columna && c.idFila === fila);
@@ -37,11 +149,13 @@ const miraSiPoneMaquina = (celda: Celda, columna: Id, fila: Id, celdaConMaquina:
   if(celda.id === columna && celda.idFila === fila && celdaConMaquina !== undefined){
     celda.maquina = {direccion: celdaConMaquina.maquina.direccion, 
                      image: celdaConMaquina.maquina.image, 
-                     mover: false}
+                     mover: false,
+                     materiales:celdaConMaquina.maquina.materiales }
   }
   return celda;
 }
 
+/* MOVER UNA MAQUINA */
 const moverMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id): Celdas => {
     const celdaActual = getCeldaActual(celdas,columna, fila);
     if(celdaActual.maquina !== undefined ){
@@ -58,7 +172,8 @@ const moverMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id):
           idFila: celdaConMaquina.idFila,
           maquina: {
             direccion: celdaConMaquina.maquina.direccion,
-            image: celdaConMaquina.maquina.image
+            image: celdaConMaquina.maquina.image,
+            materiales: celdaConMaquina.maquina.materiales
           }
         } 
         return celdas.map(c => ( c.maquina === undefined ? 
@@ -96,9 +211,14 @@ const cambiarPosicionMaquina = (maquina: MaquinaType): MaquinaType =>{
 }
 
 /* PONE UNA MAQUINA */
-const ponerMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id): Celdas => {
-    return celdas.map(c => ( c.id === columna && c.idFila === fila ? 
-    { ...c, maquina: { image: boton.image, direccion: 'SUR', mover: false }} : c ));
+const ponerMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id, infoBox: StatusInfoBox): Celdas => {
+    if(infoBox.ganancias >= boton.price){
+      infoBox.ganancias = infoBox.ganancias - boton.price;
+      return celdas.map(c => ( c.id === columna && c.idFila === fila ? 
+      { ...c, maquina: { image: boton.image, direccion: 'SUR', mover: false, materiales:0 }} : c ));
+    }else{
+      return celdas;
+    }
 };
 
 /* BORRA UNA MAQUINA */
@@ -108,4 +228,4 @@ const borrarMaquina = (celdas: Celdas, boton: ButtonType, columna: Id, fila: Id)
 };
 
 
-   export default celdas;
+   export default gameState;

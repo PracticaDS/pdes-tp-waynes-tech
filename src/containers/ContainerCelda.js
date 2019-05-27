@@ -1,22 +1,30 @@
 import { connect }    from 'react-redux';
 import Celda          from '../components/Celda';
-import type { State } from '../types';
-import { ponerMaquina } from '../actions/MaquinaAction';
+import type { State, Dispatch } from '../types';
+import { ponerMaquina} from '../actions/MaquinaAction';
+
 
 
 export const mapStateToProps = (state: State) => {
     return {
        botones: state.botones,
-       celdas: state.celdas,
+       gameState: state.gameState,
        configFabrica: state.configFabrica
-    };
+    }
 };
 
+const doActionsOnSelection = (boton, columna, fila, dispatch) => {
+ 
+    //setInterval(() => { dispatch(tick());} , 3000);
+    return(
+       ponerMaquina(boton, columna, fila)
+   )
+};
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
          onClickCelda: (boton, columna, fila) => {
-           dispatch(ponerMaquina(boton, columna, fila));
+           dispatch(doActionsOnSelection(boton, columna, fila,dispatch))
       }
     };
 };

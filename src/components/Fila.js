@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-//import { Celda } from './Celda';
 import  Celda  from '../containers/ContainerCelda';
-//import type { ButtonType } from '../types/ButtonType';
+
 
 import './Fila.css';
 
@@ -26,7 +25,7 @@ export class Fila extends Component {
     dibujarCeldas(){
         var celdas = [];
         for (var i=1; i<= this.props.columnas; i++){
-
+           //Inserta las celdas en el estate inicial
            if(this.props.celdaStore.length < (this.props.columnas * this.props.filas)){
               this.props.celdaStore.push({ id:i , idFila: this.props.index});
            }

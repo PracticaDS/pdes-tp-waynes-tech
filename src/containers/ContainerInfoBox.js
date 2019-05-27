@@ -1,14 +1,13 @@
 import { connect }    from 'react-redux';
-import Fabrica        from '../components/Fabrica';
+import InfoBox        from '../components/InfoBox';
 import type { State } from '../types';
 
 
 export const mapStateToProps = (state: State) => {
     return {
-       gameState: state.gameState,
+       configFabrica: state.configFabrica,
        botones: state.botones,
-       configFabrica: state.configFabrica
-
+       gameState: state.gameState
     };
 };
 
@@ -18,5 +17,4 @@ const connector = connect(
     null
 );
   
-export default connector(Fabrica);
-  
+export default connector(InfoBox);

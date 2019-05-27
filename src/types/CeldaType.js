@@ -1,5 +1,6 @@
 import type MaquinaType from "../components/Maquina";
-import {Id} from './Utils';
+
+ {Id, Image} from './Utils';
 
 
 export type CeldaType = {

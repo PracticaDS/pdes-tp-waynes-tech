@@ -13,8 +13,8 @@ export const mapStateToProps = (state: State) => {
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        onButtonToolClick: id => {
-            dispatch(selectButton(id));
+        onButtonToolClick: (id, name, price) => {
+            dispatch(selectButton(id, name, price));
       }
     };
 };
