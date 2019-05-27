@@ -4,6 +4,8 @@ import type {ConfigFabrica, GameType} from '../types/GameState';
 import type { Buttons }     from '../types/ButtonType';
 //import type { Celdas }      from '../types/CeldaType';
 import React from 'react';
+import TickButton  from '../containers/ContainerTickButton';
+ 
 
 export type Props = {
   configFabrica: ConfigFabrica,
@@ -13,10 +15,11 @@ export type Props = {
 
 export const Fabrica = ({ configFabrica, botones, gameState }: Props) => (
   <div className="grilla">
-
+      
       { dibujarGrilla(configFabrica.numeroFilas, configFabrica.numeroColumnas, botones, gameState)}
-  
-  </div>  
+      <TickButton/>
+  </div> 
+   
 ); 
 
 const getBotonSelected = (buttons: Buttons): ButtonType => {

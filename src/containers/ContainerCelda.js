@@ -1,7 +1,7 @@
 import { connect }    from 'react-redux';
 import Celda          from '../components/Celda';
 import type { State, Dispatch } from '../types';
-import { ponerMaquina, tick } from '../actions/MaquinaAction';
+import { ponerMaquina} from '../actions/MaquinaAction';
 
 
 
@@ -15,7 +15,7 @@ export const mapStateToProps = (state: State) => {
 
 const doActionsOnSelection = (boton, columna, fila, dispatch) => {
  
-    setInterval(() => { dispatch(tick());} , 3000);
+    //setInterval(() => { dispatch(tick());} , 3000);
     return(
        ponerMaquina(boton, columna, fila)
    )
