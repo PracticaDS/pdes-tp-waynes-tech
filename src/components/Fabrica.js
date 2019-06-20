@@ -2,10 +2,9 @@ import './Fabrica.css';
 import { Fila } from './Fila';
 import type {ConfigFabrica, GameType} from '../types/GameState';
 import type { Buttons }     from '../types/ButtonType';
-//import type { Celdas }      from '../types/CeldaType';
 import React from 'react';
 import TickButton  from '../containers/ContainerTickButton';
- 
+import SaveButton  from '../containers/ContainerSaveButton';
 
 export type Props = {
   configFabrica: ConfigFabrica,
@@ -18,6 +17,7 @@ export const Fabrica = ({ configFabrica, botones, gameState }: Props) => (
       
       { dibujarGrilla(configFabrica.numeroFilas, configFabrica.numeroColumnas, botones, gameState)}
       <TickButton/>
+      <SaveButton/>
   </div> 
    
 ); 

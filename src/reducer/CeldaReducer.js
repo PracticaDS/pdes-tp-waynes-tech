@@ -122,7 +122,6 @@ const tickMaquinas = (celdas: Celdas, infoBox: StatusInfoBox): Celdas => {
         celdasNuevas.push(celdas[i]);
       }
     }
- 
     return celdasNuevas;
 
 }
