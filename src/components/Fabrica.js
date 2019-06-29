@@ -16,8 +16,10 @@ export const Fabrica = ({ configFabrica, botones, gameState }: Props) => (
   <div className="grilla">
       
       { dibujarGrilla(configFabrica.numeroFilas, configFabrica.numeroColumnas, botones, gameState)}
-      <TickButton/>
-      <SaveButton/>
+      <div>
+        <TickButton/>
+        <SaveButton/>
+      </div>
   </div> 
    
 ); 

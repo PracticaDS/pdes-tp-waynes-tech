@@ -16,7 +16,7 @@ const convertCeldas = (celdas) => {
 export const SaveButton = ({ saveGame, gameState }: Props) => (
     <div>
         <button type="button" className="saveButton" 
-            onClick={() => saveGame(1, gameState.statusInfoBox.ganancias, convertCeldas(gameState.celdas)) } >
+            onClick={() => saveGame(gameState.statusInfoBox.ganancias, convertCeldas(gameState.celdas)) } >
             Save
         </button>
     </div>

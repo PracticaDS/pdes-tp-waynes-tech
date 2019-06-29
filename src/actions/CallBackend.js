@@ -13,8 +13,14 @@ const jsonBody = body => ({
     ...jsonBody(body)
   })
 
-export const SAVE_GAME = fetchConstants("SAVE_GAME")
+  export const putWithJSONBody = body => ({
+    method: 'PUT',
+    ...jsonBody(body)
+  })
 
+export const SAVE_GAME  = fetchConstants("SAVE_GAME")
+
+export const LOGIN_USER = fetchConstants("LOGIN_USER")
 
 export function fetchConstants(prefix) {
   return {
@@ -24,16 +30,51 @@ export function fetchConstants(prefix) {
   }
 }
 
-export function saveUsuarioFabrica(idJuego, ganancias, celdas) {
-    return createAsyncAction(
+export function loginUsuario(username) {
+  return createAsyncAction(
+    () => fetch("api/usuarios/username", postWithJSONBody({username})), 
+    LOGIN_USER,
+    json => {return { username: json}},
+    {username}
+  );
+}
+
+export function saveUsuarioFabrica(ganancias, celdas) {
+  return createAsyncAction(
+    () => fetch("/api/medici/fabricas/85", putWithJSONBody({ganancias, celdas})), 
+    SAVE_GAME,
+    json => {return { fabrica: json}},
+    {}
+  );
+}
+
+/*
+async function getfabrica(URL) {
+  try {
+    const resp = await fetch(URL);
+    const json = await resp.json();
+    return json;
+  } catch (err) {
+       console.log("Error al obtener fabrica "+URL)
+       console.log(err)
+  }
+}
+*/
+/*
+getfabrica("/api/medici/fabricas/85").then(fabrica => {
+  if(fabrica !== undefined){
+    console.log("Modifica la fabrica");
+ }else{
+    console.log("Crea la fabrica");
+    createAsyncAction(
       () => fetch("api/fabrica", postWithJSONBody({idJuego, ganancias, celdas})), 
       SAVE_GAME,
       json => {return { gameSate: json}}
     );
-}
+ }
+});
+*/
 
-
-  
 function createAsyncAction(fetchRequest, 
     fetchConstants, 
     jsonToAction = json => {return {response: json}},
@@ -45,6 +86,7 @@ function createAsyncAction(fetchRequest,
       try {
         const response = await fetchRequest();
         const json = await response.json();
+  
         if (response.ok) {
           dispatch({ type: fetchConstants.ok, ...jsonToAction(json) })
           if(_.isFunction(onSuccess)){

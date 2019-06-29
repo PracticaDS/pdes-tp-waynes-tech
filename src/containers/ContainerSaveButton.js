@@ -1,5 +1,5 @@
-import { connect }    from 'react-redux';
-import SaveButton     from '../components/SaveButton';
+import { connect }              from 'react-redux';
+import SaveButton               from '../components/SaveButton';
 import type { State, Dispatch } from '../types';
 import { saveUsuarioFabrica }   from '../actions/CallBackend';
 
@@ -14,8 +14,8 @@ export const mapStateToProps = (state: State) => {
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        saveGame: (idJuego, ganancias, celdas) => {
-           dispatch(saveUsuarioFabrica(idJuego, ganancias, celdas))
+        saveGame: (ganancias, celdas) => {
+           dispatch(saveUsuarioFabrica(ganancias, celdas))
       }
     };
 };
