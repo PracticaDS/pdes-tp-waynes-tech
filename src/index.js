@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import './index.css';
-import App from './components/App';
+//import App from './components/App';
 import { initialState } from './constants';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
