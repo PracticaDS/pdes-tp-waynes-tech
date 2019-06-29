@@ -9,7 +9,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducer';
 import type { Store } from './types';
-//import LoginPage from './loginComponents/loginPage.js';
+import LoginPage from './loginComponents/loginPage.js';
 
 const store: Store = createStore(
   reducers,
@@ -24,10 +24,10 @@ const element = document.getElementById('root');
 if (!element) {
   throw new Error("couldn't find element with id root");
 }
-//<LoginPage />
+//<App />
 render(
   <Provider store={store}>
-     <App />
+     <LoginPage />
   </Provider>,
   element
 );

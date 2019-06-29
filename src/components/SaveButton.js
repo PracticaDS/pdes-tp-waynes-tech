@@ -5,6 +5,7 @@ export type Props = {
     gameState: GameType
 }
 
+/* convierne las celdas al formato que el backend espera */
 const convertCeldas = (celdas) => {
     const response = [];
     for (var i=0; i< celdas.length; i++){
@@ -16,7 +17,7 @@ const convertCeldas = (celdas) => {
 export const SaveButton = ({ saveGame, gameState }: Props) => (
     <div>
         <button type="button" className="saveButton" 
-            onClick={() => saveGame(gameState.statusInfoBox.ganancias, convertCeldas(gameState.celdas)) } >
+            onClick={() => saveGame("medici", 85, gameState.statusInfoBox.ganancias, convertCeldas(gameState.celdas)) } >
             Save
         </button>
     </div>

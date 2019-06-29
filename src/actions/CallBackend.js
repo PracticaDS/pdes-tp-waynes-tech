@@ -32,16 +32,16 @@ export function fetchConstants(prefix) {
 
 export function loginUsuario(username) {
   return createAsyncAction(
-    () => fetch("api/usuarios/username", postWithJSONBody({username})), 
+    () => fetch("api/"+username), 
     LOGIN_USER,
     json => {return { username: json}},
     {username}
   );
 }
 
-export function saveUsuarioFabrica(ganancias, celdas) {
+export function saveUsuarioFabrica(username,idFabrica,ganancias, celdas) {
   return createAsyncAction(
-    () => fetch("/api/medici/fabricas/85", putWithJSONBody({ganancias, celdas})), 
+    () => fetch("/api/"+username+"/fabricas/"+idFabrica, putWithJSONBody({ganancias, celdas})), 
     SAVE_GAME,
     json => {return { fabrica: json}},
     {}
@@ -86,7 +86,7 @@ function createAsyncAction(fetchRequest,
       try {
         const response = await fetchRequest();
         const json = await response.json();
-  
+        console.log(json);
         if (response.ok) {
           dispatch({ type: fetchConstants.ok, ...jsonToAction(json) })
           if(_.isFunction(onSuccess)){

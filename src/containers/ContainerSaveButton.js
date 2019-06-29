@@ -14,8 +14,8 @@ export const mapStateToProps = (state: State) => {
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        saveGame: (ganancias, celdas) => {
-           dispatch(saveUsuarioFabrica(ganancias, celdas))
+        saveGame: (username, idFabrica, ganancias, celdas) => {
+           dispatch(saveUsuarioFabrica(username, idFabrica, ganancias, celdas))
       }
     };
 };
