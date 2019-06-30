@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import './index.css';
-import App from './components/App';
 import { initialState } from './constants';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -12,6 +11,9 @@ import type { Store } from './types';
 import LoginPage from './componentsLogin/LoginPage.js';
 import UsuarioFabricaPage from './componentsSeleccionFabrica/UsuarioFabricas.js';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import App from './components/App';
+
+import RedirectPage from './components/RedirectPage';
 
 const store: Store = createStore(
   reducers,
@@ -26,14 +28,16 @@ const element = document.getElementById('root');
 if (!element) {
   throw new Error("couldn't find element with id root");
 }
-//<App />
+
 render(
   <Provider store={store}>
-     <Router>
-      <Route exact path="/" component={LoginPage} />
-      <Route exact path="/fabricas" component={UsuarioFabricaPage} />
-      <Route exact path="/fabrica" component={App} />
-    </Router>
+    <RedirectPage/>
   </Provider>,
   element
 );
+
+//<Router>
+//<Route exact path="/" component={LoginPage} />
+//<Route exact path="/fabricas" component={UsuarioFabricaPage} />
+//<Route exact path="/fabrica" component={App} />
+//</Router>

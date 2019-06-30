@@ -25,14 +25,15 @@ export const initialState = {
     gameState: {
         celdas: [],
         statusInfoBox: {
-            detalle: "",
+            detalle: '',
             costo: 0,
             ganancias: 5000
         }
     },
     usuario:{
-        username:"NOT_LOGED",
-        fabricas:[]
+        username:'NOT_LOGED',
+        fabricas:[],
+        idFabricaActual:0
     }
   };
   

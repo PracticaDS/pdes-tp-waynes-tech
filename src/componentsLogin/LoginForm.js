@@ -17,7 +17,11 @@ export default class LoginForm extends React.Component {
   }
 
   render() {
-
+    return  <div className="login-form">
+    <input type="text" onChange={this.onInputChange.bind(this)}></input>
+    <button className="login" onClick={this.doLogin.bind(this)} disabled={!this.state.username}>Login</button>
+    </div>
+    /*
     if(this.props.usuario.username !== 'NOT_LOGED' ){
       return window.location.pathname = '/fabrica';
 
@@ -27,5 +31,6 @@ export default class LoginForm extends React.Component {
         <button className="login" onClick={this.doLogin.bind(this)} disabled={!this.state.username}>Login</button>
         </div>
     }
+    */
   }
 }
