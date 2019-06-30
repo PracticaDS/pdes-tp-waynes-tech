@@ -29,6 +29,10 @@ export const initialState = {
             costo: 0,
             ganancias: 5000
         }
+    },
+    usuario:{
+        username:"NOT_LOGED",
+        fabricas:[]
     }
   };
   
