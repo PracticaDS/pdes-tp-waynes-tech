@@ -1,7 +1,7 @@
 import React from 'react';
 
-export const Fabrica = ({nombre, ganancias, id}): Props => (
-    <div>
+export const Fabrica = ({nombre, ganancias, idFabrica, username, recuperarFabrica}): Props => (
+    <div onClick={() => recuperarFabrica(username, idFabrica)} >
         Nombre: {nombre}
         Ganancias: {ganancias}
     </div>

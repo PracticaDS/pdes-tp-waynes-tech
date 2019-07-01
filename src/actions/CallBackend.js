@@ -22,6 +22,9 @@ export const SAVE_GAME  = fetchConstants("SAVE_GAME")
 
 export const LOGIN_USER = fetchConstants("LOGIN_USER")
 
+export const GET_FABRICA = fetchConstants("GET_FABRICA")
+
+
 export function fetchConstants(prefix) {
   return {
     "loading": prefix + "_LOADING",
@@ -50,32 +53,16 @@ export function saveUsuarioFabrica(username,idFabrica,ganancias, celdas) {
   );
 }
 
-/*
-async function getfabrica(URL) {
-  try {
-    const resp = await fetch(URL);
-    const json = await resp.json();
-    return json;
-  } catch (err) {
-       console.log("Error al obtener fabrica "+URL)
-       console.log(err)
-  }
+/** Obtener fabrica */
+export function getFabrica(username, idFabrica) {
+  //dispatch(tick());
+  return createAsyncAction(
+    () => fetch("api/"+username+"/fabricas/"+idFabrica), 
+    GET_FABRICA,
+    json => {return { fabrica: json}},
+    {}
+  );
 }
-*/
-/*
-getfabrica("/api/medici/fabricas/85").then(fabrica => {
-  if(fabrica !== undefined){
-    console.log("Modifica la fabrica");
- }else{
-    console.log("Crea la fabrica");
-    createAsyncAction(
-      () => fetch("api/fabrica", postWithJSONBody({idJuego, ganancias, celdas})), 
-      SAVE_GAME,
-      json => {return { gameSate: json}}
-    );
- }
-});
-*/
 
 function createAsyncAction(fetchRequest, 
     fetchConstants, 
@@ -88,9 +75,8 @@ function createAsyncAction(fetchRequest,
       try {
         const response = await fetchRequest();
         const json = await response.json();
-        console.log(json);
+        //console.log(json);
         if (response.ok) {
-          console.log("response is ok");
           dispatch({ type: fetchConstants.ok, ...jsonToAction(json) })
           if(_.isFunction(onSuccess)){
             onSuccess(dispatch, json)

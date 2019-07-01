@@ -1,5 +1,5 @@
 import LoginPage from '../componentsLogin/LoginPage.js';
-import UsuarioFabricaPage from '../componentsSeleccionFabrica/UsuarioFabricas.js';
+import UsuarioFabricaPage from '../componentsSeleccionFabrica/ContainerUsuarioFabrica.js';
 import App from '../components/App';
 import React from 'react';
 import {connect} from 'react-redux';
@@ -10,7 +10,7 @@ const RedirectPage = ({ usuario }) => {
       return <LoginPage />
     } else if (usuario.idFabricaActual === 0) {
         //Si el usuario esta logueado pero aun no eligio con que fabrica jugar
-      return <UsuarioFabricaPage usuario={usuario}/>
+      return <UsuarioFabricaPage/>
     } else {
         //Si el usuario esta logueado y selecciono una fabrica, que vaya al juego
       return (

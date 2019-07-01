@@ -8,10 +8,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducer';
 import type { Store } from './types';
-import LoginPage from './componentsLogin/LoginPage.js';
-import UsuarioFabricaPage from './componentsSeleccionFabrica/UsuarioFabricas.js';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import App from './components/App';
+
 
 import RedirectPage from './components/RedirectPage';
 
@@ -35,9 +32,3 @@ render(
   </Provider>,
   element
 );
-
-//<Router>
-//<Route exact path="/" component={LoginPage} />
-//<Route exact path="/fabricas" component={UsuarioFabricaPage} />
-//<Route exact path="/fabrica" component={App} />
-//</Router>

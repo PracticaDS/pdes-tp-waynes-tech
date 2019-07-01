@@ -1,6 +1,6 @@
 import React     from 'react';
 import {connect} from 'react-redux';
-import {login} from '../actions/CallBackend';
+import {getFabrica} from '../actions/CallBackend';
 import '../components/App.css';
 import Fabrica from '../componentsSeleccionFabrica/Fabrica';
 
@@ -15,15 +15,17 @@ export const mapStateToProps = (state: State) => {
 };
 
 const FabricaConnected = 
-connect(mapStateToProps, dispatch => {return {loginUser: (username) => dispatch(login(username))}})(Fabrica)
+connect(mapStateToProps, dispatch => {return {recuperarFabrica: (username,idFabrica) => dispatch(getFabrica(username,idFabrica))}})(Fabrica)
 
 
-const dibujarFabricas = (fabricas) => {
+const dibujarFabricas = (fabricas, username) => {
     var array = [];
     for (var i=0; i< fabricas.length; i++){
         array.push(
-        <FabricaConnected nombre={fabricas[i].nombre} ganancias={fabricas[i].ganancias} 
-        id={fabricas[i].id_fabrica}></FabricaConnected>
+        <FabricaConnected nombre={fabricas[i].nombre} 
+        ganancias={fabricas[i].ganancias} 
+        id={fabricas[i].id_fabrica} 
+        username={username}></FabricaConnected>
         )
     }
     return array;
@@ -32,11 +34,11 @@ const dibujarFabricas = (fabricas) => {
 
 const UsuarioFabricaPage = (usuario) => (
   <div>
-      {console.log(usuario)}
+      {console.log(usuario.usuario.fabricas)}
      <div className="Container">
         <h1>Wayne's Tech</h1>
         <div className="UsuarioFabricaPage">      
-            {dibujarFabricas(usuario.fabricas)}
+            {dibujarFabricas(usuario.fabricas, usuario.username)}
         </div>
       </div>
   </div>
