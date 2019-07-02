@@ -15,17 +15,21 @@ export const mapStateToProps = (state: State) => {
 };
 
 const FabricaConnected = 
-connect(mapStateToProps, dispatch => {return {recuperarFabrica: (username,idFabrica) => dispatch(getFabrica(username,idFabrica))}})(Fabrica)
+connect(mapStateToProps, dispatch => {return {recuperarFabrica: (ganancias,idFabrica,celdas) => dispatch(getFabrica(ganancias,idFabrica, celdas))}})(Fabrica)
 
 
 const dibujarFabricas = (fabricas, username) => {
+
     var array = [];
     for (var i=0; i< fabricas.length; i++){
         array.push(
-        <FabricaConnected nombre={fabricas[i].nombre} 
-        ganancias={fabricas[i].ganancias} 
-        id={fabricas[i].id_fabrica} 
-        username={username}></FabricaConnected>
+        <FabricaConnected key={i} 
+          nombre={fabricas[i].nombre} 
+          ganancias={fabricas[i].ganancias} 
+          id={fabricas[i].id_fabrica} 
+          celdas={fabricas[i].celdas}
+          username={username}>
+        </FabricaConnected>
         )
     }
     return array;
@@ -34,11 +38,10 @@ const dibujarFabricas = (fabricas, username) => {
 
 const UsuarioFabricaPage = (usuario) => (
   <div>
-      {console.log(usuario.usuario.fabricas)}
      <div className="Container">
         <h1>Wayne's Tech</h1>
         <div className="UsuarioFabricaPage">      
-            {dibujarFabricas(usuario.fabricas, usuario.username)}
+            {dibujarFabricas(usuario.usuario.fabricas, usuario.usuario.username)}
         </div>
       </div>
   </div>

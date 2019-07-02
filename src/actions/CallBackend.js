@@ -54,14 +54,13 @@ export function saveUsuarioFabrica(username,idFabrica,ganancias, celdas) {
 }
 
 /** Obtener fabrica */
-export function getFabrica(username, idFabrica) {
-  //dispatch(tick());
-  return createAsyncAction(
-    () => fetch("api/"+username+"/fabricas/"+idFabrica), 
-    GET_FABRICA,
-    json => {return { fabrica: json}},
-    {}
-  );
+export function getFabrica(ganancias, idFabrica, celdas) {
+  return {
+    type: 'GET_FABRICA',
+    idFabrica,
+    ganancias,
+    celdas
+  };
 }
 
 function createAsyncAction(fetchRequest, 

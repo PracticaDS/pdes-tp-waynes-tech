@@ -3,6 +3,7 @@ import React from 'react';
 export type Props = {
     saveGame: (idJuego, ganancias, celdas) => void,
     gameState: GameType,
+    usuario: Usuario
   
 }
 
@@ -18,7 +19,7 @@ const convertCeldas = (celdas) => {
 export const SaveButton = ({ saveGame, gameState, usuario }: Props) => (
     <div>
         <button type="button" className="saveButton" 
-            onClick={() => saveGame(usuario.username, usuario.idFabrica, gameState.statusInfoBox.ganancias, convertCeldas(gameState.celdas)) } >
+            onClick={() => saveGame(usuario.username, usuario.idFabricaActual, gameState.statusInfoBox.ganancias, convertCeldas(gameState.celdas)) } >
             Save
         </button>
     </div>

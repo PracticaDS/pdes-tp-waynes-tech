@@ -17,7 +17,7 @@ const RedirectPage = ({ usuario }) => {
         <App />
       )
     }
-  }
+}
   
   const mapStateToProps = state => {
     return {

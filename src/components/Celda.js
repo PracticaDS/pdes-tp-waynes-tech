@@ -35,7 +35,8 @@ const dibujarMaquina = (celdas: Celdas, columna: Id, fila: Id ) =>  {
                </Maquina>
 
     }else{
-        return  <div>{celdaActual[0].id + " " + celdaActual[0].idFila}</div>
+        return  <div>
+        {celdaActual[0].id + " " + celdaActual[0].idFila}</div>
     }
 }
 
