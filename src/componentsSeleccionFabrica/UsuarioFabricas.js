@@ -2,7 +2,9 @@ import React     from 'react';
 import {connect} from 'react-redux';
 import {getFabrica} from '../actions/CallBackend';
 import '../components/App.css';
+import './UsuarioFabrica.css';
 import Fabrica from '../componentsSeleccionFabrica/Fabrica';
+import CreateFabricaButton from '../componentsSeleccionFabrica/ContainerCreateFabricaButton';
 
 export const mapStateToProps = (state: State) => {
   return {
@@ -15,13 +17,18 @@ export const mapStateToProps = (state: State) => {
 };
 
 const FabricaConnected = 
-connect(mapStateToProps, dispatch => {return {recuperarFabrica: (ganancias,idFabrica,celdas) => dispatch(getFabrica(ganancias,idFabrica, celdas))}})(Fabrica)
+connect(mapStateToProps, dispatch => 
+{return {recuperarFabrica: (ganancias,idFabrica,celdas) => dispatch(getFabrica(ganancias,idFabrica, celdas))}})(Fabrica)
 
 
 const dibujarFabricas = (fabricas, username) => {
 
     var array = [];
-    for (var i=0; i< fabricas.length; i++){
+    if(fabricas.length <= 0){
+      return <div>Ooh! No tenes ni una fabrica, create una viteh!</div>
+    }else{
+
+      for (var i=0; i< fabricas.length; i++){
         array.push(
         <FabricaConnected key={i} 
           nombre={fabricas[i].nombre} 
@@ -31,7 +38,9 @@ const dibujarFabricas = (fabricas, username) => {
           username={username}>
         </FabricaConnected>
         )
+      }
     }
+    
     return array;
 };
 
@@ -43,6 +52,8 @@ const UsuarioFabricaPage = (usuario) => (
         <div className="UsuarioFabricaPage">      
             {dibujarFabricas(usuario.usuario.fabricas, usuario.usuario.username)}
         </div>
+        <br/>
+        <CreateFabricaButton/>
       </div>
   </div>
 );

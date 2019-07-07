@@ -12,19 +12,9 @@ export const mapStateToProps = (state: State) => {
     };
 };
 
-/*
-export const mapDispatchToProps = (dispatch: Dispatch) => {
-    return {
-        crearFabrica: (username, idFabrica, ganancias, celdas) => {
-           dispatch(saveUsuarioFabrica(username, idFabrica, ganancias, celdas))
-      }
-    };
-};
-*/
-
 const connector = connect(
     mapStateToProps,
-    null//mapDispatchToProps
+    null
 );
   
 export default connector(UsuarioFabricaPage);

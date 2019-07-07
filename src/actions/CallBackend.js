@@ -24,6 +24,8 @@ export const LOGIN_USER = fetchConstants("LOGIN_USER")
 
 export const GET_FABRICA = fetchConstants("GET_FABRICA")
 
+export const CREAR_FABRICA = fetchConstants("CREAR_FABRICA")
+
 
 export function fetchConstants(prefix) {
   return {
@@ -61,6 +63,17 @@ export function getFabrica(ganancias, idFabrica, celdas) {
     ganancias,
     celdas
   };
+}
+
+/** Crear 1  fabrica */
+export function crearFabrica(username, nombre) {
+
+  return createAsyncAction(
+    () => fetch("/api/"+username+"/fabrica", postWithJSONBody({nombre})), 
+    CREAR_FABRICA,
+    json => {return { fabrica: json}},
+    {}
+  );
 }
 
 function createAsyncAction(fetchRequest, 
