@@ -1,0 +1,11 @@
+div.UsuarioFabricaPage div.fabrica {
+    background-color: blue;
+}
+
+div.UsuarioFabricaPage div.fabrica:hover {
+    background-color: greenyellow;
+}
+
+div.UsuarioFabricaPage{
+    
+}

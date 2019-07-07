@@ -17,6 +17,8 @@ const gameState = (state: GameType = [], action: MaquinaAction): GameType => {
         return newState(moverMaquina(state.celdas, action.boton, action.idCelda, action.idFila), state.statusInfoBox);
       case 'TICK':
         return newState(tickMaquinas(state.celdas, state.statusInfoBox), state.statusInfoBox);
+      case 'GET_FABRICA':
+        return newState(convertCeldas(action.celdas), {detalle: '',costo: 0, ganancias: action.ganancias});
       default:
         return state;
     }
@@ -27,6 +29,15 @@ const newState = (celdas: Celdas, infoBox: StatusInfoBox): GameType => {
             celdas: celdas,
             statusInfoBox: infoBox
   }
+}
+
+/* convierne las celdas al formato que el backend espera */
+const convertCeldas = (celdas) => {
+  const response = [];
+  for (var i=0; i< celdas.length; i++){
+      response.push({ idFila: celdas[i].idFila, id: celdas[i].idColumna , maquina: celdas[i].maquina } );
+  };
+  return response;
 }
 
 /* ****************************************TICK DE MAQUINAS*************************************************** */
@@ -122,7 +133,6 @@ const tickMaquinas = (celdas: Celdas, infoBox: StatusInfoBox): Celdas => {
         celdasNuevas.push(celdas[i]);
       }
     }
- 
     return celdasNuevas;
 
 }

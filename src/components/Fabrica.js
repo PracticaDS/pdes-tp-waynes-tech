@@ -1,23 +1,25 @@
 import './Fabrica.css';
 import { Fila } from './Fila';
-import type {ConfigFabrica, GameType} from '../types/GameState';
+import type {ConfigFabrica, GameType, Usuario} from '../types/GameState';
 import type { Buttons }     from '../types/ButtonType';
-//import type { Celdas }      from '../types/CeldaType';
 import React from 'react';
 import TickButton  from '../containers/ContainerTickButton';
- 
+import SaveButton  from '../containers/ContainerSaveButton';
 
 export type Props = {
   configFabrica: ConfigFabrica,
   botones: Buttons,
-  gameState: GameType
+  gameState: GameType,
+  usuario: Usuario
 };
 
-export const Fabrica = ({ configFabrica, botones, gameState }: Props) => (
+export const Fabrica = ({ configFabrica, botones, gameState, usuario }: Props) => (
   <div className="grilla">
-      
-      { dibujarGrilla(configFabrica.numeroFilas, configFabrica.numeroColumnas, botones, gameState)}
-      <TickButton/>
+      { dibujarGrilla(configFabrica.numeroFilas, configFabrica.numeroColumnas, botones, gameState, usuario)}
+      <div>
+        <TickButton/>
+        <SaveButton/>
+      </div>
   </div> 
    
 ); 
@@ -27,14 +29,13 @@ const getBotonSelected = (buttons: Buttons): ButtonType => {
   return (boton.length === 0 ? undefined : boton[0]);
 };
 
-const dibujarGrilla = (numeroFilas: CantFilas, numeroColumnas: CantColumnas, botones: Buttons, gameState: GameType) => {
-  
+const dibujarGrilla = (numeroFilas: CantFilas, numeroColumnas: CantColumnas, botones: Buttons, gameState: GameType, usuario:Usuario) => {
   let botonSeleccionado = getBotonSelected(botones);
 
   var grilla = [];
   for (var i = 1; i <= numeroFilas; i++) {
     grilla.push(
-      <Fila key={i} index={i} columnas={numeroColumnas} boton={botonSeleccionado} celdaStore={gameState.celdas} filas={numeroFilas} />
+      <Fila key={i} index={i} usuario={usuario} columnas={numeroColumnas} boton={botonSeleccionado} celdaStore={gameState.celdas} filas={numeroFilas} />
     );
   }
   return grilla;

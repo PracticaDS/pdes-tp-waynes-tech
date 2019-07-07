@@ -13,10 +13,15 @@ export type ConfigFabrica = {
 export type DetalleMaquina = string;
 export type CostoMaquina = number;
 
+export type Usuario = {
+    +username: string;
+}
+
 export type StatusInfoBox = {
     +detalle: DetalleMaquina,
     +costo: CostoMaquina,
-    +ganancias: Ganancias
+    +ganancias: Ganancias,
+    +usuario: Usuario,
 }
 
 export type GameType = {
