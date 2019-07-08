@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/pdes-tp-waynes-tech/static/media/move.cbfcb2fb.PNG"
   },
   {
-    "revision": "fec4f37d83179cf16653",
+    "revision": "a076910407db362342d3",
     "url": "/pdes-tp-waynes-tech/static/css/main.789a0c10.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/pdes-tp-waynes-tech/static/media/rotate.d45efe18.PNG"
   },
   {
-    "revision": "fec4f37d83179cf16653",
-    "url": "/pdes-tp-waynes-tech/static/js/main.b5a92d86.chunk.js"
+    "revision": "a076910407db362342d3",
+    "url": "/pdes-tp-waynes-tech/static/js/main.57e80c5e.chunk.js"
   },
   {
     "revision": "42bc229719c912b352f4c25a714c2055",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/pdes-tp-waynes-tech/static/media/transporter.00687f2e.PNG"
   },
   {
-    "revision": "4ed245ebb589d9737ee98e62470f51bd",
+    "revision": "e326c0506fecc22b59c3d0ba8e0a92b0",
     "url": "/pdes-tp-waynes-tech/index.html"
   }
 ];
