@@ -1,18 +1,24 @@
-FROM node:11.10.0
+#base image
+FROM node
 
-# this makes the build fail in travis ! see https://github.com/nodejs/docker-node/issues/661
-# RUN npm install --global yarn
+# set working directory
+RUN mkdir /usr/src/app
 
-COPY package.json .
-COPY yarn.lock .
+#copy all files from current directory to docker
+COPY . /usr/src/app
 
-RUN yarn install; \
-    yarn global add serve
+WORKDIR /usr/src/app
 
-COPY . . 
-RUN yarn build
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
-ENV NODE_ENV=production
+# install and cache app dependencies
+RUN yarn
 
-EXPOSE 3000
-CMD serve -p 3000 -s build
+COPY package.json /usr/src/app/package.json
+RUN npm install --silent
+COPY . /usr/src/app
+RUN npm run build
+
+# start app
+CMD ["npm", "start"]
